@@ -37,4 +37,4 @@ Set the following params as you see fit:
 
 ## License
 
-This theme is released under the [**MIT**](/LICENSE.md) License.
+This theme is released under the [**MIT**](/LICENSE) License.
