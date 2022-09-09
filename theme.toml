@@ -1,0 +1,14 @@
+name = "mako"
+license = "MIT"
+licenselink = "https://github.com/Eraph/hugo-theme-mako/blob/master/LICENSE.md"
+description = "Mako theme for blogs"
+homepage = "https://github.com/Eraph/hugo-theme-mako"
+tags = ["blog", "responsive"]
+features = [
+]
+min_version = 0.55
+
+[author]
+  name = "Phil Watson"
+  homepage = "https://rakhama.com"
+

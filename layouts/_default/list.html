@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ range .Paginator.Pages }}
+<div class="uk-card uk-card-default uk-margin-medium-bottom">
+  <div class="uk-card-body">
+    <article class="uk-article">
+      {{ partial "article_header.html" . }}
+
+      {{ .Summary }}
+
+      {{ if .Truncated }}
+      <p class="uk-text-right">
+        <a href="{{ .RelPermalink }}">&raquo; Read more</a>
+      </p>
+      {{ end }}
+    </article>
+  </div>
+</div>
+{{ end }}
+{{ end }}

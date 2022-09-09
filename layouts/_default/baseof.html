@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default " en-us" }}">
+
+<head>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Site.Title }} :: {{ .Title }}{{ end }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="{{ .Site.Params.author }}" />
+    <meta name="description"
+        content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
+    <base href="/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/css/uikit.min.css" />
+
+    {{ template "_internal/google_analytics.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+</head>
+
+<body>
+    <div class="uk-container">
+        {{ block "title" . }}
+        {{ partial "site_header.html" . }}
+        {{ end }}
+
+        <div uk-grid>
+            <div class="uk-width-expand@m main">
+                {{ block "main" . }}
+                {{ .Content }}
+                {{ end }}
+            </div>
+            <div class="uk-width-1-4@m">
+                {{ partial "sidebar.html" . }}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/js/uikit-icons.min.js"></script>
+</body>
+
+</html>
