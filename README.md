@@ -1,5 +1,5 @@
 # hugo-theme-mako
-Mako theme for Hugo built upon [UI-Kit](https://getuikit.com).
+Mako theme for [Hugo](https://gohugo.io/) built upon [UI-Kit](https://getuikit.com).
 
 ## Getting Started
 
