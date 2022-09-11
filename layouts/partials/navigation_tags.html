@@ -1,0 +1,17 @@
+{{ $relPermalink := path.Join .Page.RelPermalink }}
+
+{{ with .Site.Taxonomies.tags }}
+<ul class="uk-nav uk-nav-default uk-margin-small" uk-nav>
+	<li class="uk-nav-header uk-text-capitalize">Tags</li>
+	<li>
+		<span>
+			{{ range .ByCount }}
+			<a href="tags/{{ .Name }}" class="uk-link-muted uk-text-nowrap uk-margin-small-right">
+				<span>{{ .Name }}</span>
+				<span class="uk-badge">{{ .Count }}</span>
+			</a>
+			{{ end }}
+		</span>
+	</li>
+</ul>
+{{ end }}

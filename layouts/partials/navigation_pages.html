@@ -1,0 +1,18 @@
+{{ $sortedPages := .Site.RegularPages.ByParam "order" }}
+{{ $sections := union (slice "pages") .Site.Params.Sections }}
+{{ $relPermalink := path.Join .Page.RelPermalink }}
+
+{{ range $section := $sections }}
+{{ with where $sortedPages "Section" $section }}
+<ul class="uk-nav uk-nav-default uk-margin-small" uk-nav>
+	{{ if ne $section "pages" }}
+	<li class="uk-nav-header uk-text-capitalize">{{ humanize $section }}</li>
+	{{ end }}
+	{{ range . }}
+	<li class='{{ if eq $relPermalink (path.Join "/" $section (urlize .Page.Title)) }}uk-active{{ end }}'>
+		<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+	</li>
+	{{ end }}
+</ul>
+{{ end }}
+{{ end }}

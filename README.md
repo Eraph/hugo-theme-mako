@@ -33,6 +33,30 @@ Set the following params as you see fit:
   description = "Something About This Site"
   profilePicture = "path/to.image"
   dateFormat = "02/Jan/2006 15:04 MST"
+  sections = ["projects"]
+  navigation_taxonomies = [ "series", "categories" ]
+```
+
+### Navigation Lists
+#### Pages and other sections
+Pages in the `pages` directory will be shown without a header in navigation. Add a page with:
+
+``` bash
+hugo new pages/my-page-name.md
+```
+
+Add the front matter parameter `order` to set the order of pages in the list. The order is smallest to largest.
+
+Specify other sections in `config.toml` as an array, e.g.
+``` toml
+sections = ["projects"]
+```
+
+#### Taxonomies
+All tags are shown by default at the bottom of the navigation bar. Other taxonomies can be shown above them by specifying them in the `navigation_taxonomies` array in `config.toml`, for example:
+
+``` toml
+navigation_taxonomies = [ "series", "categories" ]
 ```
 
 ## License

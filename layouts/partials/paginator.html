@@ -1,6 +1,6 @@
 <ul class="uk-pagination uk-flex-center" uk-margin>
-	{{ if .Paginator.HasPrev }}
-	<li><a href="{{ .Paginator.Prev.URL }}"><span uk-pagination-previous></span></a></li>
+	{{ if .HasPrev }}
+	<li><a href="{{ .Prev.URL }}"><span uk-pagination-previous></span></a></li>
 	{{ else }}
 	<li class="uk-disabled">
 		<span>
@@ -8,9 +8,9 @@
 		</span>
 	</li>
 	{{ end }}
-	<li class="uk-active"><span>{{ .Paginator.PageNumber }}</span></li>
-	{{ if .Paginator.HasNext }}
-	<li><a href="{{ .Paginator.Next.URL }}"><span uk-pagination-next></span></a></li>
+	<li class="uk-active"><span>{{ .PageNumber }}</span></li>
+	{{ if .HasNext }}
+	<li><a href="{{ .Next.URL }}"><span uk-pagination-next></span></a></li>
 	{{ else }}
 	<li class="uk-disabled"><span><span uk-pagination-next></span></span></li>
 	{{ end }}

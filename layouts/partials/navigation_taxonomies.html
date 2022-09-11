@@ -1,0 +1,18 @@
+{{ $taxonomies := .Site.Taxonomies }}
+{{ $relPermalink := path.Join .Page.RelPermalink }}
+
+{{ range $taxonomy := .Site.Params.Navigation_Taxonomies}}
+{{ with index $taxonomies . }}
+<ul class="uk-nav uk-nav-default uk-margin-small" uk-nav>
+	<li class="uk-nav-header uk-text-capitalize">{{ $taxonomy }}</li>
+	{{ range $key := .ByCount }}
+	<li class='{{ if eq $relPermalink (path.Join "/" $taxonomy .Name) }}uk-active{{ end }}'>
+		<a href="{{ $taxonomy }}/{{ .Name }}">
+			<span>{{ humanize .Name }}</span>
+			<span class="uk-badge uk-text-margin-small-left">{{ .Count }}</span>
+		</a>
+	</li>
+	{{ end }}
+</ul>
+{{ end }}
+{{ end }}
