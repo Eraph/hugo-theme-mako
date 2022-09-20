@@ -1,0 +1,62 @@
+{{ $tagsUrl := "tags" | absURL }}
+{{ $categoriesUrl := "categories" | absURL }}
+{{ $seriesUrl := "series" | absURL }}
+
+<div class="uk-card-footer">
+    <div class="uk-article-meta uk-text-small">
+        <ul class="uk-comment-meta uk-subnav uk-margin-remove-top">
+            <li>
+                <span>
+                    <span uk-icon="calendar"></span>
+                    <span class="uk-margin-small-left">
+                        {{ .Date | time.Format (.Site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
+                    </span>
+                </span>
+            </li>
+            {{ with .Params.Categories }}
+            {{ range . }}
+            <li>
+                <span>
+                    <span uk-icon="folder"></span>
+                    <a href="{{ $categoriesUrl }}/{{ . | urlize }}"
+                        class="uk-text-capitalize uk-link-muted uk-margin-small-left" title="Category: {{ . }}">
+                        {{ . }}
+                    </a>
+                </span>
+            </li>
+            {{ end }}
+            {{ end }}
+            {{ with .Params.Series }}
+            {{ range . }}
+            <li>
+                <span>
+                    <span uk-icon="album"></span>
+                    <a href="{{ $seriesUrl}}/{{ . | urlize }}" class="uk-text-capitalize uk-margin-small-left"
+                        title="Series: {{ . }}">
+                        {{ . }}
+                    </a>
+                </span>
+            </li>
+            {{ end }}
+            {{ end }}
+        </ul>
+        {{ if .Truncated }}
+        <div class="window-footer-buttons">
+            <a href="{{ .RelPermalink }}" class="uk-button uk-button-default uk-button-small" title="Read more">Read
+                more &raquo;</a>
+        </div>
+        {{ else }}
+        <p class="tags">
+            {{ with .Params.Tags }}
+            <span uk-icon="tag"></span>
+            {{ range . }}
+            <a href="{{ $tagsUrl }}/{{ . | urlize }}" class="uk-text-lowercase uk-margin-small-left"
+                title="Tag: {{ . }}">
+                {{ . }}
+            </a>
+            {{ end }}
+            {{ end }}
+        </p>
+        {{ end }}
+    </div>
+</div>

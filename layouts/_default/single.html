@@ -1,13 +1,14 @@
 {{ define "main" }}
-<div class="uk-card uk-card-default uk-margin-medium-bottom">
-  <div class="uk-card-body">
-    <article class="uk-article">
-      {{ partial "article_header.html" . }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+  <article class="uk-article">
+    {{ partial "window_header.html" . }}
 
+    <div class="uk-card-body">
       {{ .Content }}
-    </article>
-  </div>
-</div>
-{{ end }}
+    </div>
 
-{{/* TODO: "See also" */}}
+    {{ partial "article_footer.html" . }}
+  </article>
+</div>
+
+{{ end }}

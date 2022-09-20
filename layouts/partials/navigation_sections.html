@@ -1,0 +1,21 @@
+{{ $relPermalink := .Page.RelPermalink }}
+
+{{ range where $.Site.Sections "Name" "in" .Site.Params.Sections }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+	<article class="uk-article">
+		{{ partial "window_header.html" . }}
+		<div class="uk-card-body">
+			<ul class="uk-nav uk-nav-default uk-margin-remove-vertical" uk-nav>
+				{{ range .Pages.ByParam "order" }}
+				<li class='{{ if eq $relPermalink .Page.RelPermalink }}uk-active{{ end }}'>
+					<a href="{{ .Page.RelPermalink }}">
+						<span uk-icon="thumbnails"></span>
+						{{ .Page.Title }}
+					</a>
+				</li>
+				{{ end }}
+			</ul>
+		</div>
+	</article>
+</div>
+{{ end }}

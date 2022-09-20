@@ -1,0 +1,23 @@
+{{ $icon := "file-text" }}
+
+{{ if .IsHome }}
+{{ $icon = "user" }}
+{{ end }}
+
+{{ if in .Site.Params.Sections .Name }}
+{{ $icon = "copy"}}
+{{ end }}
+
+{{ if eq .Name "Series" }}
+{{ $icon = "album"}}
+{{ end }}
+
+{{ if eq .Name "Categories" }}
+{{ $icon = "folder"}}
+{{ end }}
+
+{{ if eq .Name "Tags" }}
+{{ $icon = "tag"}}
+{{ end }}
+
+{{ return $icon }}

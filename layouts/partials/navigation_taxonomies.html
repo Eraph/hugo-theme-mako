@@ -1,18 +1,24 @@
-{{ $taxonomies := .Site.Taxonomies }}
-{{ $relPermalink := path.Join .Page.RelPermalink }}
+{{ $relPermalink := .Page.RelPermalink }}
 
-{{ range $taxonomy := .Site.Params.Navigation_Taxonomies}}
-{{ with index $taxonomies . }}
-<ul class="uk-nav uk-nav-default uk-margin-small" uk-nav>
-	<li class="uk-nav-header uk-text-capitalize">{{ $taxonomy }}</li>
-	{{ range $key := .ByCount }}
-	<li class='{{ if eq $relPermalink (path.Join "/" $taxonomy .Name) }}uk-active{{ end }}'>
-		<a href="{{ $taxonomy }}/{{ .Name }}">
-			<span>{{ humanize .Name }}</span>
-			<span class="uk-badge uk-text-margin-small-left">{{ .Count }}</span>
-		</a>
-	</li>
-	{{ end }}
-</ul>
+{{ range .Site.Params.NavigationTaxonomies}}
+{{ with ($.Site.GetPage (printf "/%s" .)) }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+	<article class="uk-article">
+		{{ partial "window_header.html" . }}
+		<div class="uk-card-body">
+			<ul class="uk-nav uk-nav-default uk-margin-remove-vertical" uk-nav>
+				{{ range (index .Site.Taxonomies (lower .Name)).ByCount }}
+				<li class='{{ if eq $relPermalink .Page.RelPermalink }}uk-active{{ end }}'>
+					<a href="{{ .Page.RelPermalink }}">
+						<span uk-icon="copy"></span>
+						<span>{{ .Name }}</span>
+						<span class="uk-badge uk-text-margin-small-left">{{ .Count }}</span>
+					</a>
+				</li>
+				{{ end }}
+			</ul>
+		</div>
+	</article>
+</div>
 {{ end }}
 {{ end }}

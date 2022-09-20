@@ -1,0 +1,192 @@
+// Do like this
+$mako-primary: {{ .Site.Params.Theme.Primary | default "#0fc" }};
+$mako-background: {{ .Site.Params.Theme.Background | default "#090909" }};
+$mako-main: mix($mako-background, $mako-primary, $weight: 30%);
+$mako-subdued: mix($mako-background, $mako-primary, $weight: 50%);
+$mako-faint: mix($mako-background, $mako-primary, $weight: 80%);
+
+$mako-unknown: #00ff00;
+
+// 1. Custom variables and variable overwrites.
+$global-color: $mako-main;
+$global-inverse-color: $mako-background;
+$global-background: $mako-background;
+$global-muted-background: $mako-background;
+$global-muted-color: $mako-main;
+$global-link-color: $mako-primary;
+$global-emphasis-color: $mako-primary;
+$global-primary-background: $mako-primary;
+$global-border: $mako-primary;
+
+$global-success-background: #cf0;
+$global-warning-background: #fc0;
+$global-danger-background: #c00;
+
+// 2. Import default variables and available mixins.
+@import "uikit/variables-theme.scss";
+@import "uikit/mixins-theme.scss";
+
+// 3. Custom mixin overwrites.
+@mixin hook-card() { color: #000; }
+
+// 4. Import UIkit.
+@import "uikit/uikit-theme.scss";
+
+body {
+    background-image: url('../images/{{ .Site.Params.Theme.BackgroundImage | default "greyframe.gif" }}');
+    font-family: 'Jura', sans-serif;
+    font-weight: 600;
+}
+
+.uk-icon, :first-child .uk-icon {
+    color: $mako-primary;
+}
+
+.uk-navbar-container, .avatar, div.uk-card {
+    border: 1px solid $mako-primary;
+}
+
+.avatar img {
+    border: 1px solid $mako-subdued;
+}
+
+.uk-badge {
+    border: solid 1px $mako-main;
+    color: $mako-main !important;
+    background-color: $mako-faint;
+}
+
+.uk-button {
+    border-width: 1px;
+    background-color: $mako-subdued;
+}
+
+.uk-navbar-container {
+    border-top: none;
+
+    {{ with .Site.Params.Theme.TitleBackgroundImage }}
+    background-image: url('../images/{{ . }}') !important;
+    background-size: cover !important;
+    background-position-y: bottom !important;
+    {{ end }}
+
+    &:not(.uk-navbar-transparent), .uk-logo
+    {
+        background-color: $mako-main;
+        color: $mako-faint;
+        font-family: inherit;
+    }
+}
+
+ul.uk-nav li.tags {
+    padding-left: 40px;
+
+    a {
+        display: inline;
+        padding: 5px;
+        margin-right: 10px;
+    }
+}
+
+div.uk-card {
+    background-color: $global-muted-background;
+
+    .uk-card-header, .uk-card-footer {
+        margin: 0;
+        color: $mako-primary;
+    }
+    
+    .uk-card-header {
+        padding: 1px;
+        border-bottom: 1px solid $mako-primary;    
+        background-color: $mako-subdued;    
+        
+        .title {
+                display: flex;
+                
+                > * {
+                    border: 1px solid $mako-primary;
+                }
+            
+            .title-icon {
+                flex-shrink: 1;
+                padding: 2px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                min-width: 20px;
+
+                > svg {
+                    margin: 0;
+                }
+            }
+
+            .title-text {
+                flex-grow: 1;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                background-color: $mako-main;
+                color: $mako-faint !important;
+                font-weight: 800;
+                margin: 0 1px;
+                padding: 2px 10px;
+            }
+        }
+    }
+
+    .uk-card-footer {
+        border-top: 1px solid $mako-primary;
+        background-color: $mako-subdued;
+        padding: 1px;
+
+        .uk-article-meta {
+            color: inherit;
+            display: flex;
+            flex-wrap: wrap;
+
+            a {
+                color: inherit;
+            }
+
+            ul, div, p {
+                margin: 2px 0;
+
+                span {
+                    color: inherit;
+                    text-transform: capitalize;
+                    flex-shrink: 1;
+                }
+                
+                &.uk-comment-meta {
+                    color: inherit; 
+                    a {
+                        color: inherit;
+                    }
+                }
+            }
+
+            ul {
+                flex-grow: 1;
+                margin: 2px 15px;
+            }
+
+            p {
+                width: 100%;
+
+                &.tags {
+                    margin: 2px 35px;
+                }
+            }
+
+            div.window-footer-buttons {
+                flex-shrink: 1;
+
+                a {
+                    text-transform: capitalize;
+                    line-height: 1.4rem;
+                }
+            }
+        }
+    }
+}

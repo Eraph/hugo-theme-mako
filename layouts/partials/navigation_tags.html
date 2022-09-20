@@ -1,17 +1,21 @@
 {{ $relPermalink := path.Join .Page.RelPermalink }}
 
-{{ with .Site.Taxonomies.tags }}
-<ul class="uk-nav uk-nav-default uk-margin-small" uk-nav>
-	<li class="uk-nav-header uk-text-capitalize">Tags</li>
-	<li>
-		<span>
-			{{ range .ByCount }}
-			<a href="tags/{{ .Name }}" class="uk-link-muted uk-text-nowrap uk-margin-small-right">
-				<span>{{ .Name }}</span>
-				<span class="uk-badge">{{ .Count }}</span>
-			</a>
-			{{ end }}
-		</span>
-	</li>
-</ul>
+{{ with (.Site.GetPage "/tags") }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+	<article class="uk-article">
+		{{ partial "window_header.html" . }}
+		<div class="uk-card-body">
+			<ul class="uk-nav uk-nav-default uk-margin-remove-vertical" uk-nav>
+				<li class="tags uk-padding uk-padding-remove-vertical">
+					{{ range .Site.Taxonomies.tags.ByCount }}
+					<a href="{{ .Page.RelPermalink }}" class="uk-link-muted uk-text-nowrap uk-margin-small-right">
+						<span>{{ .Name }}</span>
+						<span class="uk-badge">{{ .Count }}</span>
+					</a>
+					{{ end }}
+				</li>
+			</ul>
+		</div>
+	</article>
+</div>
 {{ end }}

@@ -1,5 +1,50 @@
-<img src="{{ .Site.Params.ProfilePicture }}" class="uk-border-circle">
-<h3 class="uk-card-title uk-margin-remove-bottom">{{ .Site.Params.Author }}</h3>
-<p class="uk-text-meta uk-margin-remove-top">
-  {{ .Site.Params.Description }}
-</p>
+{{ $relPermalink := path.Join .Page.RelPermalink }}
+
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+  <article class="uk-article">
+    <div class="uk-card-header">
+      <p class="title">
+        <span class="title-icon" uk-icon='{{ partial "get_icon.html" .Page }}'></span>
+        <span class="uk-link-reset title-text" title='{{ .Site.Params.Author | default "My Blog" }}'>
+          {{ .Site.Params.Author | default "My Blog" }}</span>
+        <a class="title-icon" uk-icon="link" href="{{ .Site.BaseURL }}"></a>
+      </p>
+    </div>
+    <div class="uk-card-body">
+      {{ with .Site.Params.ProfilePicture }}
+      <div class="avatar uk-margin-bottom">
+        <img src="{{ . | relURL }}">
+      </div>
+      {{ end }}
+      {{ with where (.Site.RegularPages.ByParam "order") "Section" "pages" }}
+      <ul class="uk-nav uk-nav-default" uk-nav>
+        {{ range . }}
+        <li class='{{ if eq $relPermalink (path.Join "/pages" (urlize .Page.Title)) }}uk-active{{ end }}'>
+          <a href="{{ .Page.RelPermalink }}">
+            <span uk-icon="file-text"></span>
+            {{ .Page.Title }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+    <div class="uk-card-footer">
+      <div class="uk-article-meta uk-text-small">
+        <p class="uk-comment-meta uk-subnav uk-margin-remove-top">
+          {{ if isset .Site.Params "taglines" }}
+          <span>
+            {{ index (shuffle .Site.Params.Taglines) 0 }}
+          </span>
+          {{ else }}
+          {{ with .Site.Params.Description | default "A Cool Blog" }}
+          <span>
+            {{ . }}
+          </span>
+          {{ end }}
+          {{ end }}
+        </p>
+      </div>
+    </div>
+  </article>
+</div>

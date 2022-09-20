@@ -1,17 +1,30 @@
-<ul class="uk-pagination uk-flex-center" uk-margin>
-	{{ if .HasPrev }}
-	<li><a href="{{ .Prev.URL }}"><span uk-pagination-previous></span></a></li>
-	{{ else }}
-	<li class="uk-disabled">
-		<span>
-			<span uk-pagination-previous></span>
-		</span>
-	</li>
-	{{ end }}
-	<li class="uk-active"><span>{{ .PageNumber }}</span></li>
-	{{ if .HasNext }}
-	<li><a href="{{ .Next.URL }}"><span uk-pagination-next></span></a></li>
-	{{ else }}
-	<li class="uk-disabled"><span><span uk-pagination-next></span></span></li>
-	{{ end }}
-</ul>
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+	<article class="uk-article">
+		<div class="uk-card-header">
+			<p class="title">
+				<span class="title-icon" uk-icon="code"></span>
+				<span class="title-text">Pagination</span>
+				<a class="title-icon" uk-icon="chevron-up" href="#top"></a>
+			</p>
+		</div>
+		<div class="uk-card-body">
+			<ul class="uk-pagination uk-flex-center" uk-margin>
+				{{ if .HasPrev }}
+				<li><a href="{{ .Prev.URL }}"><span uk-pagination-previous></span></a></li>
+				{{ else }}
+				<li class="uk-disabled">
+					<span>
+						<span uk-pagination-previous></span>
+					</span>
+				</li>
+				{{ end }}
+				<li class="uk-active"><span>{{ .PageNumber }}</span></li>
+				{{ if .HasNext }}
+				<li><a href="{{ .Next.URL }}"><span uk-pagination-next></span></a></li>
+				{{ else }}
+				<li class="uk-disabled"><span><span uk-pagination-next></span></span></li>
+				{{ end }}
+			</ul>
+		</div>
+	</article>
+</div>

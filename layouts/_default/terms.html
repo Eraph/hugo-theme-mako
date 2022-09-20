@@ -1,13 +1,21 @@
 {{ define "main" }}
-<h1>{{ .Page.Title }}</h1>
-<ul class="uk-nav">
-    {{ range .Data.Terms.ByCount }}
-    <li>
-        <a href="{{ .Page.RelPermalink }}">
-            <span>{{ .Name }}</span>
-            <span class="uk-badge">{{ .Count }}</span>
-        </a>
-    </li>
-    {{ end }}
-</ul>
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+    <article class="uk-article">
+        {{ partial "window_header.html" . }}
+
+        <div class="uk-card-body">
+            <ul class="uk-nav">
+                {{ range .Data.Terms.ByCount }}
+                <li>
+                    <a href="{{ .Page.RelPermalink }}">
+                        <span>{{ .Name }}</span>
+                        <span class="uk-badge">{{ .Count }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </article>
+</div>
+
 {{ end }}

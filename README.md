@@ -28,13 +28,16 @@ Set the following params as you see fit:
 
 ``` toml
 [params]
-  title = "My Site's Name"
   author = "My Name"
   description = "Something About This Site"
   profilePicture = "path/to.image"
   dateFormat = "02/Jan/2006 15:04 MST"
   sections = ["projects"]
   navigation_taxonomies = [ "series", "categories" ]
+
+  [params.theme]
+  primary = "#fc0"
+  background = "#090909"
 ```
 
 ### Navigation Lists
