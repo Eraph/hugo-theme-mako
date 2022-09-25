@@ -62,13 +62,13 @@ a {
     }
 }
 
-.uk-navbar-container, .avatar, div.uk-card {
+.uk-navbar-container, .image, div.uk-card {
     border: 1px solid $mako-primary;
     box-shadow: 0 0 0 1px $mako-background;
 }
 
-.avatar img {
-    border: 1px solid $mako-subdued;
+.image img {
+    border: 1px solid $mako-faint;
 }
 
 .uk-badge {
@@ -170,6 +170,14 @@ div.uk-card {
                 font-weight: 800;
                 margin: 0 1px;
                 padding: 2px 10px;
+            }
+        }
+    }
+
+    .uk-card-body {
+        .summary-image {
+            img {
+                max-width: 300px;
             }
         }
     }

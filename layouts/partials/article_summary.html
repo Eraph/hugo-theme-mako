@@ -2,8 +2,19 @@
 	<article class="uk-article">
 		{{ partial "window_header.html" . }}
 
-		<div class="uk-card-body">
-			{{ .Summary }}
+		<div class="uk-card-body uk-flex">
+			{{ if isset .Params "image" }}
+			{{ $pageLink := .RelPermalink }}
+			{{ with .Resources.GetMatch .Params.Image }}
+			{{ $image := .Resize "300x" }}
+			<div class="uk-margin-right image summary-image">
+				<a href="{{ $pageLink }}">
+					<img src="{{ $image.RelPermalink }}">
+				</a>
+			</div>
+			{{ end }}
+			{{ end }}
+			<p class="uk-margin-remove">{{ .Summary }}</p>
 		</div>
 
 		<div class="uk-card-footer">
