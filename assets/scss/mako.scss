@@ -27,6 +27,8 @@ $global-danger-background: #c00;
 $tooltip-background: $mako-primary;
 $tooltip-color: $mako-faint;
 
+$base-pre-color: $mako-primary;
+
 // 2. Import default variables and available mixins.
 @import "uikit/variables-theme.scss";
 @import "uikit/mixins-theme.scss";
@@ -48,6 +50,26 @@ a {
         transition: 0.15s;
         color: $mako-subdued !important;
     }
+}
+
+blockquote {
+    border-left: 3px solid $mako-main;
+    padding-left: 5px;
+    font-style: unset;
+}
+
+pre {
+    border-radius: 0;
+}
+
+em {
+    color: unset;
+}
+
+:not(pre) > code {
+    color: $mako-primary;
+    background-color: $mako-faint;
+    font-weight: normal;
 }
 
 .uk-icon, :first-child .uk-icon {
