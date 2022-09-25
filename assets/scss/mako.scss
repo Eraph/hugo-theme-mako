@@ -207,7 +207,8 @@ div.uk-card {
             max-width: 300px;
 
             @media (max-width: $breakpoint-medium) {
-                margin-right: 0 !important;
+                margin-right: auto !important;
+                margin-left: auto;
                 margin-bottom: 20px;
             }
         }
