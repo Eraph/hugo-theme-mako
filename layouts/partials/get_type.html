@@ -1,0 +1,15 @@
+{{ $type := .Kind }}
+
+{{ if eq .Name "Series" }}
+{{ $type = "Series"}}
+{{ end }}
+
+{{ if eq .Name "Categories" }}
+{{ $type = "Categories"}}
+{{ end }}
+
+{{ if eq .Name "Tags" }}
+{{ $type = "Tags"}}
+{{ end }}
+
+{{ return ($type | humanize) }}

@@ -1,9 +1,11 @@
 // Do like this
 $mako-primary: {{ .Site.Params.Theme.Primary | default "#0fc" }};
 $mako-background: {{ .Site.Params.Theme.Background | default "#090909" }};
-$mako-main: mix($mako-background, $mako-primary, $weight: 30%);
-$mako-subdued: mix($mako-background, $mako-primary, $weight: 50%);
-$mako-faint: mix($mako-background, $mako-primary, $weight: 80%);
+$mako-secondary: {{ .Site.Params.Theme.Secondary | default "$mako-background" }};
+
+$mako-main: mix($mako-secondary, $mako-primary, $weight: 30%);
+$mako-subdued: mix($mako-secondary, $mako-primary, $weight: 50%);
+$mako-faint: mix($mako-secondary, $mako-primary, $weight: 80%);
 
 $mako-unknown: #00ff00;
 
@@ -22,6 +24,9 @@ $global-success-background: #cf0;
 $global-warning-background: #fc0;
 $global-danger-background: #c00;
 
+$tooltip-background: $mako-primary;
+$tooltip-color: $mako-faint;
+
 // 2. Import default variables and available mixins.
 @import "uikit/variables-theme.scss";
 @import "uikit/mixins-theme.scss";
@@ -34,16 +39,32 @@ $global-danger-background: #c00;
 
 body {
     background-image: url('../images/{{ .Site.Params.Theme.BackgroundImage | default "greyframe.gif" }}');
-    font-family: 'Jura', sans-serif;
+    font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
     font-weight: 600;
+}
+
+a {
+    &:hover {
+        transition: 0.15s;
+        color: $mako-subdued !important;
+    }
 }
 
 .uk-icon, :first-child .uk-icon {
     color: $mako-primary;
+    flex-shrink: 0 !important;
+}
+
+.uk-container {
+    @media (max-width: $breakpoint-medium) {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }
 
 .uk-navbar-container, .avatar, div.uk-card {
     border: 1px solid $mako-primary;
+    box-shadow: 0 0 0 1px $mako-background;
 }
 
 .avatar img {
@@ -59,6 +80,16 @@ body {
 .uk-button {
     border-width: 1px;
     background-color: $mako-subdued;
+
+    &.uk-button-default {
+        background-color: $mako-faint;
+
+        &:hover {
+            background-color: $mako-primary;
+            color: $mako-faint !important;
+            border-color: $mako-faint;
+        }
+    }
 }
 
 .uk-navbar-container {
@@ -72,10 +103,14 @@ body {
 
     &:not(.uk-navbar-transparent), .uk-logo
     {
-        background-color: $mako-main;
-        color: $mako-faint;
+        background-color: $mako-faint;
+        color: $mako-primary;
         font-family: inherit;
     }
+}
+
+.uk-tooltip {
+    border: 1px solid $mako-faint;
 }
 
 ul.uk-nav li.tags {
@@ -99,11 +134,14 @@ div.uk-card {
     .uk-card-header {
         padding: 1px;
         border-bottom: 1px solid $mako-primary;    
-        background-color: $mako-subdued;    
+        background-color: $mako-subdued;
+
+        a:hover {
+            transition: 0.15s;
+            color: $mako-faint !important;
+        }
         
         .title {
-                display: flex;
-                
                 > * {
                     border: 1px solid $mako-primary;
                 }
@@ -114,7 +152,8 @@ div.uk-card {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                min-width: 20px;
+                justify-content: center;
+                min-width: 24px;
 
                 > svg {
                     margin: 0;
@@ -126,8 +165,8 @@ div.uk-card {
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
-                background-color: $mako-main;
-                color: $mako-faint !important;
+                background-color: $mako-faint;
+                color: $mako-primary !important;
                 font-weight: 800;
                 margin: 0 1px;
                 padding: 2px 10px;
@@ -138,12 +177,19 @@ div.uk-card {
     .uk-card-footer {
         border-top: 1px solid $mako-primary;
         background-color: $mako-subdued;
-        padding: 1px;
+        padding: 0;
+
+        a:hover {
+            transition: 0.15s;
+            color: $mako-faint !important;
+        }
 
         .uk-article-meta {
             color: inherit;
-            display: flex;
-            flex-wrap: wrap;
+
+            @media (max-width: $breakpoint-medium) {
+                flex-direction: column;
+            }
 
             a {
                 color: inherit;
@@ -156,6 +202,8 @@ div.uk-card {
                     color: inherit;
                     text-transform: capitalize;
                     flex-shrink: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 
                 &.uk-comment-meta {
@@ -167,8 +215,15 @@ div.uk-card {
             }
 
             ul {
-                flex-grow: 1;
+                flex-shrink: 1;
                 margin: 2px 15px;
+
+                li {
+                    flex: none;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
             }
 
             p {
@@ -176,16 +231,27 @@ div.uk-card {
 
                 &.tags {
                     margin: 2px 35px;
+                    flex-wrap: wrap;
+
+                    a {
+                        white-space: nowrap;
+                    }
                 }
             }
 
             div.window-footer-buttons {
-                flex-shrink: 1;
+                flex-grow: 1;
+                margin: 1px;
+                justify-content: end;
 
                 a {
                     text-transform: capitalize;
                     line-height: 1.4rem;
                 }
+            }
+
+            .uk-subnav > * {
+                flex: inherit;
             }
         }
     }

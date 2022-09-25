@@ -1,0 +1,12 @@
+{{ $tagsUrl := "tags" | absURL }}
+
+<p class="tags uk-flex">
+	{{ with .Params.Tags }}
+	<span uk-icon="tag"></span>
+	{{ range . }}
+	<a href="{{ $tagsUrl }}/{{ . | urlize }}" class="uk-text-lowercase uk-margin-small-left">
+		{{ . }}
+	</a>
+	{{ end }}
+	{{ end }}
+</p>

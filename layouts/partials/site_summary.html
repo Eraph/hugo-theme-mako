@@ -3,11 +3,12 @@
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
   <article class="uk-article">
     <div class="uk-card-header">
-      <p class="title">
-        <span class="title-icon" uk-icon='{{ partial "get_icon.html" .Page }}'></span>
-        <span class="uk-link-reset title-text" title='{{ .Site.Params.Author | default "My Blog" }}'>
+      <p class="title uk-flex">
+        <span class="title-icon" uk-icon='{{ partial "get_icon.html" .Page }}'
+          title='{{ partial "get_type.html" .Page }}' uk-tooltip></span>
+        <span class="uk-link-reset title-text">
           {{ .Site.Params.Author | default "My Blog" }}</span>
-        <a class="title-icon" uk-icon="link" href="{{ .Site.BaseURL }}"></a>
+        <a class="title-icon" uk-icon="link" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
       </p>
     </div>
     <div class="uk-card-body">

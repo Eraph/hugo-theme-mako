@@ -10,7 +10,8 @@
         content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css2?family={{ .Site.Params.Theme.Font | default "Jura" }}&display=swap'
+        rel="stylesheet">
 
     {{ range .AlternativeOutputFormats -}}
     {{ printf `

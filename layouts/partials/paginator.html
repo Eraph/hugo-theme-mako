@@ -1,16 +1,16 @@
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
 	<article class="uk-article">
 		<div class="uk-card-header">
-			<p class="title">
-				<span class="title-icon" uk-icon="code"></span>
+			<p class="title uk-flex">
+				<span class="title-icon" uk-icon="code" title="Pagination" uk-tooltip></span>
 				<span class="title-text">Pagination</span>
-				<a class="title-icon" uk-icon="chevron-up" href="#top"></a>
+				<a class="title-icon" href="" uk-totop uk-scroll title="Go to top" uk-tooltip></a>
 			</p>
 		</div>
 		<div class="uk-card-body">
 			<ul class="uk-pagination uk-flex-center" uk-margin>
 				{{ if .HasPrev }}
-				<li><a href="{{ .Prev.URL }}"><span uk-pagination-previous></span></a></li>
+				<li><a href="{{ .Prev.URL }}"><span uk-pagination-previous title="Previous" uk-tooltip></span></a></li>
 				{{ else }}
 				<li class="uk-disabled">
 					<span>
@@ -20,7 +20,7 @@
 				{{ end }}
 				<li class="uk-active"><span>{{ .PageNumber }}</span></li>
 				{{ if .HasNext }}
-				<li><a href="{{ .Next.URL }}"><span uk-pagination-next></span></a></li>
+				<li><a href="{{ .Next.URL }}"><span uk-pagination-next title="Next" uk-tooltip></span></a></li>
 				{{ else }}
 				<li class="uk-disabled"><span><span uk-pagination-next></span></span></li>
 				{{ end }}

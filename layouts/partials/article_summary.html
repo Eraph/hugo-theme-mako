@@ -6,6 +6,11 @@
 			{{ .Summary }}
 		</div>
 
-		{{ partial "article_footer.html" . }}
+		<div class="uk-card-footer">
+			<div class="uk-article-meta uk-text-small uk-flex">
+				{{ partial "article_footer.html" . }}
+				{{ partial "summary_footer.html" . }}
+			</div>
+		</div>
 	</article>
 </div>
