@@ -62,6 +62,12 @@ a {
     }
 }
 
+.uk-card-body {
+    @media (max-width: $breakpoint-medium) {
+        flex-direction: column;
+    }
+}
+
 .uk-navbar-container, .image, div.uk-card {
     border: 1px solid $mako-primary;
     box-shadow: 0 0 0 1px $mako-background;
@@ -176,8 +182,11 @@ div.uk-card {
 
     .uk-card-body {
         .summary-image {
-            img {
-                max-width: 300px;
+            max-width: 300px;
+
+            @media (max-width: $breakpoint-medium) {
+                margin-right: 0 !important;
+                margin-bottom: 20px;
             }
         }
     }
@@ -239,7 +248,6 @@ div.uk-card {
 
                 &.tags {
                     margin: 2px 35px;
-                    flex-wrap: wrap;
 
                     a {
                         white-space: nowrap;
@@ -254,7 +262,6 @@ div.uk-card {
 
                 a {
                     text-transform: capitalize;
-                    line-height: 1.4rem;
                 }
             }
 

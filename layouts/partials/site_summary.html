@@ -1,4 +1,5 @@
 {{ $relPermalink := path.Join .Page.RelPermalink }}
+{{ $title := .Site.Params.Author | default "My Blog" }}
 
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
   <article class="uk-article">
@@ -6,8 +7,8 @@
       <p class="title uk-flex">
         <span class="title-icon" uk-icon='{{ partial "get_icon.html" .Page }}'
           title='{{ partial "get_type.html" .Page }}' uk-tooltip></span>
-        <span class="uk-link-reset title-text">
-          {{ .Site.Params.Author | default "My Blog" }}</span>
+        <span class="uk-link-reset title-text" title="{{ $title }}" uk-tooltip>{{ $title }}
+        </span>
         <a class="title-icon" uk-icon="link" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
       </p>
     </div>
@@ -32,16 +33,12 @@
     </div>
     <div class="uk-card-footer">
       <div class="uk-article-meta uk-text-small">
-        <p class="uk-comment-meta uk-subnav uk-margin-remove-top">
+        <p class="uk-comment-meta uk-subnav uk-margin-remove-top uk-padding-small uk-padding-remove-vertical">
           {{ if isset .Site.Params "taglines" }}
-          <span>
-            {{ index (shuffle .Site.Params.Taglines) 0 }}
-          </span>
+          {{ index (shuffle .Site.Params.Taglines) 0 }}
           {{ else }}
           {{ with .Site.Params.Description | default "A Cool Blog" }}
-          <span>
-            {{ . }}
-          </span>
+          {{ . }}
           {{ end }}
           {{ end }}
         </p>

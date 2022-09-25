@@ -7,7 +7,7 @@
 			{{ $pageLink := .RelPermalink }}
 			{{ with .Resources.GetMatch .Params.Image }}
 			{{ $image := .Resize "300x" }}
-			<div class="uk-margin-right image summary-image">
+			<div class="uk-margin-right image summary-image uk-flex-none">
 				<a href="{{ $pageLink }}">
 					<img src="{{ $image.RelPermalink }}">
 				</a>
