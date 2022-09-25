@@ -31,11 +31,8 @@
 </head>
 
 <body>
-    <a id="top"></a>
     <div class="uk-container">
-        {{ block "title" . }}
         {{ partial "site_header.html" . }}
-        {{ end }}
 
         <div uk-grid>
             <div class="uk-width-expand@m main">
@@ -47,6 +44,8 @@
                 {{ partial "sidebar.html" . }}
             </div>
         </div>
+
+        {{ partial "site_footer.html" . }}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/js/uikit.min.js"></script>
