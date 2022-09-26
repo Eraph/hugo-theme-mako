@@ -41,6 +41,7 @@ $base-pre-color: $mako-primary;
 
 body {
     background-image: url('../images/{{ .Site.Params.Theme.BackgroundImage | default "greyframe.gif" }}');
+    background-attachment: fixed;
     font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
     font-weight: 600;
 }
