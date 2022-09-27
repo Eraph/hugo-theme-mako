@@ -18,6 +18,14 @@
         <img src="{{ . | relURL }}">
       </div>
       {{ end }}
+      {{ with .Site.Params.Location }}
+      <ul class="uk-list uk-margin-remove-bottom">
+        <li class="uk-text-small">
+          <span uk-icon="location"></span>
+          {{ . }}
+        </li>
+      </ul>
+      {{ end }}
       {{ with where (.Site.RegularPages.ByParam "order") "Section" "pages" }}
       <ul class="uk-nav uk-nav-default" uk-nav>
         {{ range . }}
