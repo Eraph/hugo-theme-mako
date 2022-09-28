@@ -125,7 +125,7 @@ em {
     border-top: none;
 
     {{ with .Site.Params.Theme.TitleBackgroundImage }}
-    background-image: url('../images/{{ . }}') !important;
+    background-image: url('../{{ . }}') !important;
     background-size: cover !important;
     background-position-y: bottom !important;
     {{ end }}
