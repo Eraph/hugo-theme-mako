@@ -184,6 +184,12 @@ All tags are shown by default at the bottom of the navigation bar. Other taxonom
 navigation_taxonomies = [ "series", "categories" ]
 ```
 
+## Contributing
+
+Contributions are welcome by way of pull requests.
+
+Please let me know if there are any gaps in the theme's coverage by [raising an issue](https://github.com/Eraph/hugo-theme-mako/issues/new).
+
 ## License
 
 This theme is released under the [**MIT**](/LICENSE) License.
