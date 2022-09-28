@@ -2,7 +2,7 @@
     <p class="title uk-flex">
         <span class="title-icon" uk-icon='{{ partial "get_icon.html" .Page }}'
             title='{{ partial "get_type.html" .Page }}' uk-tooltip></span>
-        <a class="uk-link-reset title-text" href="{{ .RelPermalink }}" title="{{ .Name }}" uk-tooltip>
+        <a class="uk-link-reset title-text" href="{{ .RelPermalink }}" title="{{ .Name }}" uk-tooltip="pos: top-left">
             {{ .Name }}</a>
         <a class="title-icon" uk-icon="link" href="{{ .RelPermalink }}" title="View {{ .Kind }} {{ .Name }}"
             uk-tooltip></a>
