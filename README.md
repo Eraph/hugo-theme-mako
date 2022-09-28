@@ -30,12 +30,13 @@ Set the following params as you see fit:
 ``` toml
 [params]
   author = "My Name"  # Put your name in here
-  description = "Something About This Site" # Appears under your profile picture
   profilePicture = "path/to.image"  # Path to your profile picture, e.g. "images/avatar.jpg"
-  dateFormat = "02/Jan/2006 15:04 MST"  # How to format dates. See the note below before changing this.
+  location = "New York City, USA" # Optional location indiciator, shows below your profile picture
+  description = "Something About This Site" # Appears under your profile picture
   sections = ["projects"] # List any sections to be displayed in the sidebar
   navigation_taxonomies = [ "series", "categories" ]  # List any taxonomies to be displayed in the sidebar
-  location = "New York City, USA" # Optional location indiciator, shows below your profile picture
+  sidebar = "left"  # This moves the sidebar to the left. By default it is on the right
+  dateFormat = "02/Jan/2006 15:04 MST"  # How to format dates. See the note below before changing this.
 
   [params.theme]
   titleBackgroundImage = "images/bg.jpg" # Optional background image for the title bar

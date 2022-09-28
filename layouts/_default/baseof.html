@@ -34,7 +34,13 @@
     <div class="uk-container">
         {{ partialCached "site_header.html" . }}
 
-        <div uk-grid>
+        {{ $contentFlow := "uk-flex-row" }}
+
+        {{ if eq (.Site.Params.sidebar | lower) "left" }}
+        {{ $contentFlow = "uk-flex-row-reverse" }}
+        {{ end }}
+
+        <div uk-grid class="{{ $contentFlow }}">
             <div class="uk-width-expand@m main">
                 {{ block "main" . }}
                 {{ .Content }}
