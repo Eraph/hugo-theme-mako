@@ -1,0 +1,7 @@
+{{ $tagline := .Description | default "A Cool Blog" }}
+
+{{ if isset . "taglines" }}
+{{ $tagline = index (shuffle .Taglines) 0 }}
+{{ end }}
+
+{{ return $tagline }}

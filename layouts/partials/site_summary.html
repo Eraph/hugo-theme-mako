@@ -42,13 +42,7 @@
     <div class="uk-card-footer">
       <div class="uk-article-meta uk-text-small">
         <p class="uk-comment-meta uk-subnav uk-margin-remove-top uk-padding-small uk-padding-remove-vertical">
-          {{ if isset .Site.Params "taglines" }}
-          {{ index (shuffle .Site.Params.Taglines) 0 }}
-          {{ else }}
-          {{ with .Site.Params.Description | default "A Cool Blog" }}
-          {{ . }}
-          {{ end }}
-          {{ end }}
+          {{ partial "get_tagline.html" .Site.Params }}
         </p>
       </div>
     </div>
