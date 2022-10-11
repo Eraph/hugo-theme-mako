@@ -1,6 +1,6 @@
-{{ $tagsUrl := "tags" | absURL }}
+{{ $tagsUrl := "tags" | relURL }}
 
-<p class="tags uk-flex uk-flex-wrap uk-flex-wrap-around">
+<p class="tags uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-1">
 	{{ with .Params.Tags }}
 	<span uk-icon="tag"></span>
 	{{ range . }}

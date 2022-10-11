@@ -29,6 +29,8 @@ $tooltip-color: $mako-faint;
 
 $base-pre-color: $mako-primary;
 
+$global-font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
+
 // 2. Import default variables and available mixins.
 @import "uikit/variables-theme.scss";
 @import "uikit/mixins-theme.scss";
@@ -42,8 +44,8 @@ $base-pre-color: $mako-primary;
 body {
     background-image: url('../images/{{ .Site.Params.Theme.BackgroundImage | default "greyframe.gif" }}');
     background-attachment: fixed;
-    font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
     font-weight: 600;
+    overflow-x: hidden;
 }
 
 a {
@@ -86,8 +88,10 @@ em {
 }
 
 .uk-card-body {
-    @media (max-width: $breakpoint-medium) {
-        flex-direction: column;
+    &:not(&.uk-flex-row) {
+        @media (max-width: $breakpoint-medium) {
+            flex-direction: column;
+        }
     }
 }
 
@@ -106,9 +110,10 @@ em {
     background-color: $mako-faint;
 }
 
-.uk-button {
+.uk-button, .uk-icon-button {
     border-width: 1px;
     background-color: $mako-subdued;
+    border-radius: 0;
 
     &.uk-button-default {
         background-color: $mako-faint;
@@ -124,15 +129,33 @@ em {
 .uk-navbar-container {
     border-top: none;
 
-    {{ with .Site.Params.Theme.TitleBackgroundImage }}
-    background-image: url('../{{ . }}') !important;
-    background-size: cover !important;
-    background-position-y: bottom !important;
-    {{ end }}
+    > :first-child {
+        {{ with .Site.Params.Theme.TitleBackgroundImage }}
+        background-image: url('../{{ . }}') !important;
+        background-size: cover !important;
+        background-position-y: bottom !important;
+        {{ end }}
+    }
 
     &:not(.uk-navbar-transparent), .uk-logo
     {
         font-family: inherit;
+    }
+
+    .header-navigation {
+        padding: 1px;
+        color: $mako-primary;
+        background-color: $mako-subdued;
+        border-top: 1px solid $mako-primary;
+
+        li > a {
+            color: inherit;
+
+            &:hover {
+                transition: 0.15s;
+                color: $mako-faint !important;
+            }
+        }
     }
 }
 
@@ -150,8 +173,51 @@ ul.uk-nav li.tags {
     }
 }
 
+ul.uk-nav span, ul.uk-list span, ul.uk-list a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.uk-offcanvas-bar {
+    border-right: 1px solid $mako-primary;
+    color: unset;
+
+    a {
+        color: inherit;
+    }
+
+    .uk-nav-default > li {
+        &.uk-active a span {
+            color: $mako-primary;
+        }
+
+        > a {
+            color: inherit;
+        }
+    }
+
+    .uk-list > li {
+        display: flex;
+        
+        > * {
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        > span:not(.uk-icon) {
+            color: $mako-primary;
+        }
+    }
+}
+
 div.uk-card {
     background-color: $global-muted-background;
+
+    .uk-article {
+        display: flex;
+        flex-direction: column;
+    }
 
     .uk-card-header, .uk-card-footer {
         margin: 0;
@@ -278,7 +344,6 @@ div.uk-card {
             }
 
             div.window-footer-buttons {
-                flex-grow: 1;
                 margin: 1px;
                 justify-content: end;
 

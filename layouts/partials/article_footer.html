@@ -1,5 +1,5 @@
-{{ $categoriesUrl := "categories" | absURL }}
-{{ $seriesUrl := "series" | absURL }}
+{{ $categoriesUrl := "categories" | relURL }}
+{{ $seriesUrl := "series" | relURL }}
 {{ $formattedDate := .Date | time.Format (.Site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
 
 <ul class="uk-comment-meta uk-subnav uk-margin-remove-top">

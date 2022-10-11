@@ -1,6 +1,35 @@
 {{ define "main" }}
-{{ range .Paginator.Pages }}
-{{ partial "article_summary.html" . }}
+
+
+{{ if .IsSection }}
+{{ if .Content }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+    <article class="uk-article">
+        {{ partial "window_header.html" . }}
+
+        <div class="uk-card-body">
+            {{ .Content }}
+        </div>
+
+        <div class="uk-card-footer">
+            <div class="uk-article-meta uk-text-small uk-flex uk-flex-row">
+                {{ partial "article_footer.html" . }}
+                {{ partial "footer_tags.html" . }}
+            </div>
+        </div>
+    </article>
+</div>
+{{ end }}
+
+<div uk-grid class="uk-grid-match uk-child-width-1-2@m uk-flex-row">
+    {{ end }}
+
+    {{ range (.Paginate .Pages).Pages }}
+    {{ partial "article_summary.html" . }}
+    {{ end }}
+
+    {{ if .IsSection }}
+</div>
 {{ end }}
 
 {{ partial "paginator.html" .Paginator }}

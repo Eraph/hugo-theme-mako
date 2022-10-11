@@ -27,8 +27,9 @@
 </head>
 
 <body>
+    {{ partial "site_menu.html" . }}
     <div class="uk-container">
-        {{ partialCached "site_header.html" . }}
+        {{ partial "site_header.html" . }}
 
         {{ $contentFlow := "uk-flex-row" }}
 
@@ -42,7 +43,7 @@
                 {{ .Content }}
                 {{ end }}
             </div>
-            <div class="uk-width-1-4@m">
+            <div class="uk-width-1-4@m uk-visible@m uk-flex uk-flex-column">
                 {{ partial "sidebar.html" . }}
             </div>
         </div>

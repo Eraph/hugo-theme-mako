@@ -1,5 +1,14 @@
-<nav uk-navbar class="uk-navbar-container uk-margin-medium-bottom uk-padding-small">
-  <div class="uk-navbar-left">
+<nav uk-navbar class="uk-navbar-container uk-margin-medium-bottom uk-padding-remove uk-flex-column">
+  <div class="uk-navbar-left uk-padding-small">
     <a class="uk-navbar-item uk-logo" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+  </div>
+  <div class="header-navigation uk-flex uk-flex-row uk-flex-middle">
+    <ul
+      class="uk-breadcrumb uk-margin-remove-vertical uk-margin-small-left uk-margin-small-right uk-flex-auto uk-visible@m">
+      {{ partial "breadcrumb.html" (dict "p1" . "p2" .) }}
+    </ul>
+    <div class="uk-flex-none uk-hidden@m">
+      <a href="#menu" uk-toggle uk-icon="menu" class="uk-icon-button uk-button-default"></a>
+    </div>
   </div>
 </nav>

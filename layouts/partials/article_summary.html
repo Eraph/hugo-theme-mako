@@ -1,27 +1,29 @@
-<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
-	<article class="uk-article">
-		{{ partial "window_header.html" . }}
+<div class="uk-margin-medium-bottom">
+	<div class="uk-card uk-card-default uk-card-small">
+		<article class="uk-article uk-flex-stretch uk-height-1-1">
+			{{ partial "window_header.html" . }}
 
-		<div class="uk-card-body uk-flex">
-			{{ if isset .Params "image" }}
-			{{ $pageLink := .RelPermalink }}
-			{{ with .Resources.GetMatch .Params.Image }}
-			{{ $image := .Resize "300x" }}
-			<div class="uk-margin-right image summary-image uk-flex-none">
-				<a href="{{ $pageLink }}">
-					<img src="{{ $image.RelPermalink }}">
-				</a>
+			<div class="uk-card-body uk-flex uk-flex-1">
+				{{ if isset .Params "image" }}
+				{{ $pageLink := .RelPermalink }}
+				{{ with .Resources.GetMatch .Params.Image }}
+				{{ $image := .Resize "500x" }}
+				<div class="uk-margin-right image summary-image uk-flex-none">
+					<a href="{{ $pageLink }}">
+						<img src="{{ $image.RelPermalink }}">
+					</a>
+				</div>
+				{{ end }}
+				{{ end }}
+				{{ .Summary }}
 			</div>
-			{{ end }}
-			{{ end }}
-			{{ .Summary }}
-		</div>
 
-		<div class="uk-card-footer">
-			<div class="uk-article-meta uk-text-small uk-flex">
-				{{ partial "article_footer.html" . }}
-				{{ partial "summary_footer.html" . }}
+			<div class="uk-card-footer">
+				<div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-wrap">
+					{{ partial "article_footer.html" . }}
+					{{ partial "summary_footer.html" . }}
+				</div>
 			</div>
-		</div>
-	</article>
+		</article>
+	</div>
 </div>

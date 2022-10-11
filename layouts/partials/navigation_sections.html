@@ -10,7 +10,7 @@
 				<li class='{{ if eq $relPermalink .Page.RelPermalink }}uk-active{{ end }}'>
 					<a href="{{ .Page.RelPermalink }}">
 						<span uk-icon="thumbnails"></span>
-						{{ .Page.Title }}
+						<span>{{ .Page.Title }}</span>
 					</a>
 				</li>
 				{{ end }}
