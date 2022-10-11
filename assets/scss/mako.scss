@@ -214,9 +214,8 @@ ul.uk-nav span, ul.uk-list span, ul.uk-list a {
 div.uk-card {
     background-color: $global-muted-background;
 
-    .uk-article {
-        display: flex;
-        flex-direction: column;
+    .uk-article p {
+        min-width: 10rem;
     }
 
     .uk-card-header, .uk-card-footer {

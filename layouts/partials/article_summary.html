@@ -1,21 +1,23 @@
 <div class="uk-margin-medium-bottom">
 	<div class="uk-card uk-card-default uk-card-small">
-		<article class="uk-article uk-flex-stretch uk-height-1-1">
+		<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
 			{{ partial "window_header.html" . }}
 
-			<div class="uk-card-body uk-flex uk-flex-1">
+			<div class="uk-card-body uk-flex uk-flex-1 uk-flex-top uk-flex-wrap">
 				{{ if isset .Params "image" }}
 				{{ $pageLink := .RelPermalink }}
 				{{ with .Resources.GetMatch .Params.Image }}
 				{{ $image := .Resize "500x" }}
-				<div class="uk-margin-right image summary-image uk-flex-none">
+				<div class="uk-margin-right image summary-image uk-flex uk-flex-auto">
 					<a href="{{ $pageLink }}">
 						<img src="{{ $image.RelPermalink }}">
 					</a>
 				</div>
 				{{ end }}
 				{{ end }}
-				{{ .Summary }}
+				<div class="uk-flex uk-flex-1">
+					{{ .Summary }}
+				</div>
 			</div>
 
 			<div class="uk-card-footer">
