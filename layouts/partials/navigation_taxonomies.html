@@ -11,7 +11,7 @@
 				<li class='{{ if eq $relPermalink .Page.RelPermalink }}uk-active{{ end }}'>
 					<a href="{{ .Page.RelPermalink }}">
 						<span uk-icon="copy"></span>
-						<span>{{ .Name }}</span>
+						<span class="uk-text-capitalize">{{ (humanize .Name) }}</span>
 						<span class="uk-badge uk-text-margin-small-left">{{ .Count }}</span>
 					</a>
 				</li>
