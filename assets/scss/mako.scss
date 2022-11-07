@@ -179,6 +179,13 @@ ul.uk-nav span, ul.uk-list span, ul.uk-list a {
     text-overflow: ellipsis;
 }
 
+
+ul.nav-nolink > li > span {
+    padding: 5px 0;
+    display: flex;
+    column-gap: .25em;
+}
+
 .uk-offcanvas-bar {
     border-right: 1px solid $mako-primary;
     color: unset;

@@ -18,11 +18,23 @@
         <img src="{{ . | relURL }}">
       </div>
       {{ end }}
-      {{ with .Site.Params.Location }}
-      <ul class="uk-list uk-margin-remove-bottom">
+      {{ with .Site.Params.Pronouns }}
+      <ul class="uk-list uk-margin-remove-vertical nav-nolink">
         <li class="uk-text-small">
-          <span uk-icon="location"></span>
-          <span>{{ . }}</span>
+          <span>
+            <span uk-icon="quote-right"></span>
+            <span>{{ . }}</span>
+          </span>
+        </li>
+      </ul>
+      {{ end }}
+      {{ with .Site.Params.Location }}
+      <ul class="uk-list uk-margin-remove-vertical nav-nolink">
+        <li class="uk-text-small">
+          <span>
+            <span uk-icon="location"></span>
+            <span>{{ . }}</span>
+          </span>
         </li>
       </ul>
       {{ end }}

@@ -30,6 +30,7 @@ Set the following params as you see fit:
 ``` toml
 [params]
   author = "My Name"  # Put your name in here
+  pronouns = "He/Him"  # Optional pronouns that are displayed immediately below your avatar
   profilePicture = "path/to.image"  # Path to your profile picture, e.g. "images/avatar.jpg"
   location = "New York City, USA" # Optional location indiciator, shows below your profile picture
   description = "Something About This Site" # Appears under your profile picture
