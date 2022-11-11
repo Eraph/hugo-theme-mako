@@ -1,5 +1,9 @@
 {{ $type := .Kind }}
 
+{{ if eq .Name "Projects" }}
+{{ $type = "Projects"}}
+{{ end }}
+
 {{ if eq .Name "Series" }}
 {{ $type = "Series"}}
 {{ end }}

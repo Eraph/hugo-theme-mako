@@ -80,6 +80,10 @@ em {
     flex-shrink: 0 !important;
 }
 
+.uk-breadcrumb > :last-child > span, .uk-breadcrumb > :last-child > a:not([href]) {
+    color: $mako-primary;
+}
+
 .uk-container {
     @media (max-width: $breakpoint-medium) {
         padding-left: 5px;
@@ -178,7 +182,6 @@ ul.uk-nav span, ul.uk-list span, ul.uk-list a {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-
 
 ul.nav-nolink > li > span {
     padding: 5px 0;
