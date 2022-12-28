@@ -25,19 +25,22 @@ theme = "mako"
 ## Configuring
 ### Basic Configuration
 
-Set the following params as you see fit:
+The list below shows the theme's configurable settings along with their default values unless specified as optional, in which case they will be hidden when not set.
 
 ``` toml
 [params]
-  author = "My Name"  # Put your name in here
-  pronouns = "He/Him"  # Optional pronouns that are displayed immediately below your avatar
-  profilePicture = "path/to.image"  # Path to your profile picture, e.g. "images/avatar.jpg"
-  location = "New York City, USA" # Optional location indiciator, shows below your profile picture
-  description = "Something About This Site" # Appears under your profile picture
-  sections = ["projects"] # List any sections to be displayed in the sidebar
-  navigation_taxonomies = [ "series", "categories" ]  # List any taxonomies to be displayed in the sidebar
-  sidebar = "left"  # This moves the sidebar to the left. By default it is on the right
-  dateFormat = "02/Jan/2006 15:04 MST"  # How to format dates. See the note below before changing this.
+  author = "My Name"  # Put your name in here.
+  pronouns = "He/Him"  # Optional pronouns that are displayed immediately below your avatar.
+  profilePicture = "path/to.image"  # Optional path to your profile picture, e.g. "images/avatar.jpg"
+  location = "New York City, USA" # Optional location indiciator, shows below your profile picture.
+  description = "Something About This Site" # Appears under your profile picture.
+  sections = ["projects"] # Optionally list any sections to be displayed in the sidebar.
+  navigation_taxonomies = [ "series", "categories" ]  # Optionally list any taxonomies to be displayed in the sidebar.
+  sidebar = "left"  # Allows moving the sidebar to the left. By default it is on the right.
+  dateFormat = "02/Jan/2006 15:04 MST"  # How datetimes should be formatted. See the note below before changing this.
+  google_analytics = False # Enable or disable Google Analytics.
+  twitter_cards = False # Enable or disable Twitter Cards.
+  opengraph = True # Enable or disable Opengraph.
 
   [params.theme]
   titleBackgroundImage = "images/bg.jpg" # Optional background image for the title bar
@@ -49,10 +52,8 @@ Set the following params as you see fit:
   background = "#090909"
 ```
 
-Many of these settings have defaults so it's not critical that you set them.
-
 ### Date Formats
-The value you enter here must be very specific. Use the exact values as in the following example, rearranged as you need them:
+The values you enter here must be very specific. Use the exact date and time values as in the following example, rearranged as you need them:
 
 ```
 02/Jan/2006 15:04 MST
