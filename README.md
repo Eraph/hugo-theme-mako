@@ -86,6 +86,34 @@ The footer of the site summary panel (where your profile picture appears) will c
 
 Of course, Hugo is a static site generator so the tagline will not change on each refresh but it will change for each page whenever the site is regenerated. Fill this up with silly quotes and see how it affects different pages around your site.
 
+## Pages
+### Front Matter
+#### Images
+The `images` property in front matter expects an array if paths to images. The first image in this list will be used as the preview for summaries and when sharing links to Twitter, Facebook, RSS etc. For the images to show up correctly for the latter bunch, this needs to be a full path from root. For example:
+
+```
+images:
+  - posts/my-first-post/header-image.jpg
+```
+
+#### Other Properties
+- Use `description` to add a quick summary for shared links.
+- Use `categories` to group pages by category. Categories will show up in the side bar.
+- Use `series` to group pages into series. Series will show up in the side bar.
+- Use `tags` to add tags to pages. Tags will show up in the side bar.
+
+```
+description: "A breakdown of my favourite albums."
+categories:
+  - Music
+tags:
+  - music
+  - albums
+  - favourites
+series:
+  - Favourites
+```
+
 ## Custom Colours
 It is possible to set a primary, secondary and background colour to set up your own colour scheme. Secondary is optional and if not set will default to halfway between the primary and background colours. Have a look at the following example for inspiration. I'm sure you can come up with better schemes than I can.
 
