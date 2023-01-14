@@ -4,6 +4,11 @@
     {{ partial "window_header.html" . }}
 
     <div class="uk-card-body">
+      {{ if isset .Params "images" }}
+      {{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
+      {{ partial "image.html" .RelPermalink }}
+      {{ end }}
+      {{ end }}
       {{ .Content }}
     </div>
 

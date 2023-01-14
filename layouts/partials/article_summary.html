@@ -4,9 +4,9 @@
 			{{ partial "window_header.html" . }}
 
 			<div class="uk-card-body uk-flex uk-flex-1 uk-flex-top uk-flex-wrap">
-				{{ if isset .Params "image" }}
+				{{ if isset .Params "images" }}
 				{{ $pageLink := .RelPermalink }}
-				{{ with .Resources.GetMatch .Params.Image }}
+				{{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
 				{{ $image := .Resize "500x" }}
 				<div class="uk-margin-right image summary-image uk-flex uk-flex-auto">
 					<a href="{{ $pageLink }}">
