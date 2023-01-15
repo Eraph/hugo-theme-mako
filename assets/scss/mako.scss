@@ -84,6 +84,10 @@ em {
     color: $mako-primary;
 }
 
+.uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
+    content: none;
+}
+
 .uk-container {
     @media (max-width: $breakpoint-medium) {
         padding-left: 5px;
