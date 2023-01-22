@@ -9,7 +9,7 @@
 				{{ range .Pages.ByParam "order" }}
 				<li class='{{ if eq $relPermalink .Page.RelPermalink }}uk-active{{ end }}'>
 					<a href="{{ .Page.RelPermalink }}">
-						<span uk-icon="thumbnails"></span>
+						<span uk-icon="file-text"></span>
 						<span>{{ .Page.Title }}</span>
 					</a>
 				</li>
