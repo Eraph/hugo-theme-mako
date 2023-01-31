@@ -44,7 +44,6 @@ $global-font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-seri
 body {
     background-image: url('../images/{{ .Site.Params.Theme.BackgroundImage | default "greyframe.gif" }}');
     background-attachment: fixed;
-    font-weight: 600;
     overflow-x: hidden;
 }
 
