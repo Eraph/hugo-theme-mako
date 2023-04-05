@@ -215,6 +215,28 @@ All tags are shown by default at the bottom of the navigation bar. Other taxonom
 navigation_taxonomies = [ "series", "categories" ]
 ```
 
+## Shortcodes
+### Alerts
+Easily put text into an alert like so:
+```
+{{< alert >}}
+Alert! Alert!
+{{< /alert >}}
+```
+
+Pass in an alert style as an argument:
+```
+{{< alert danger >}}
+Danger! Danger!
+{{< /alert >}}
+```
+
+Possible values are:
+- primary (default)
+- success
+- warning
+- danger
+
 ## Contributing
 
 Contributions are welcome by way of pull requests.
