@@ -42,8 +42,7 @@ $global-font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-seri
 @import "uikit/uikit-theme.scss";
 
 body {
-    background-image: url('../images/{{ .Site.Params.Theme.BackgroundImage | default "greyframe.gif" }}');
-    background-attachment: fixed;
+    background: linear-gradient(27deg, $mako-primary 0%, $mako-faint 100%);
     overflow-x: hidden;
 }
 
@@ -66,6 +65,10 @@ pre {
 
 em {
     color: unset;
+}
+
+li > p {
+    margin-bottom: 0;
 }
 
 :not(pre) > code {
