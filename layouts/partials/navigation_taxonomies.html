@@ -12,7 +12,7 @@
 					<a href="{{ .Page.RelPermalink }}">
 						<span uk-icon="copy"></span>
 						<span class="uk-text-capitalize">{{ (humanize .Name) }}</span>
-						<span class="uk-badge uk-text-margin-small-left">{{ .Count }}</span>
+						<span class="uk-text-right uk-flex-1 uk-margin-small-left uk-margin-remove-bottom">{{ .Count }}</span>
 					</a>
 				</li>
 				{{ end }}

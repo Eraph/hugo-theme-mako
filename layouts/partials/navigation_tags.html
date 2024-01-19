@@ -6,14 +6,15 @@
 		{{ partial "window_header.html" . }}
 		<div class="uk-card-body">
 			<ul class="uk-nav uk-nav-default uk-margin-remove-vertical" uk-nav>
-				<li class="tags uk-padding uk-padding-remove-vertical">
-					{{ range .Site.Taxonomies.tags.ByCount }}
-					<a href="{{ .Page.RelPermalink }}" class="uk-link-muted uk-text-nowrap uk-margin-small-right">
-						<span>{{ .Name }}</span>
-						<span class="uk-badge">{{ .Count }}</span>
+				{{ range first 20 .Site.Taxonomies.tags.ByCount }}
+				<li>
+					<a href="{{ .Page.RelPermalink }}">
+						<span uk-icon="tag"></span>
+						<span class="uk-text-capitalize">{{ .Name }}</span>
+						<span class="uk-text-right uk-flex-1 uk-margin-small-left uk-margin-remove-bottom">{{ .Count }}</span>
 					</a>
-					{{ end }}
 				</li>
+				{{ end }}
 			</ul>
 		</div>
 	</article>

@@ -173,16 +173,6 @@ li > p {
     border: 1px solid $mako-faint;
 }
 
-ul.uk-nav li.tags {
-    padding-left: 40px;
-
-    a {
-        display: inline;
-        padding: 5px;
-        margin-right: 10px;
-    }
-}
-
 ul.uk-nav span, ul.uk-list span, ul.uk-list a {
     overflow: hidden;
     white-space: nowrap;

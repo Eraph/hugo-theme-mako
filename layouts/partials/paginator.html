@@ -18,7 +18,7 @@
 					</span>
 				</li>
 				{{ end }}
-				<li class="uk-active"><span>{{ .PageNumber }}</span></li>
+				<li class="uk-active"><span>{{ .PageNumber }} / {{ .Last.PageNumber }}</span></li>
 				{{ if .HasNext }}
 				<li><a href="{{ .Next.URL }}"><span uk-pagination-next title="Next" uk-tooltip></span></a></li>
 				{{ else }}
