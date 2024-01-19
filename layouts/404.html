@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+	<article class="uk-article">
+		<div class="uk-card-header">
+			<p class="title uk-flex">
+				<span class="title-icon" uk-icon='ban' title="Error" uk-tooltip></span>
+				<a class="uk-link-reset title-text" href='{{ .Site.BaseURL }}' title="HTTP Error 404: File Not Found"
+					uk-tooltip>
+					HTTP Error 404: File Not Found</a>
+				<a class="title-icon" uk-icon="home" href='{{ .Site.BaseURL }}' title="Go home" uk-tooltip></a>
+			</p>
+		</div>
+		<div class="uk-card-body">
+			<p>Nothin' here!</p>
+		</div>
+		<div class="uk-card-footer">
+			<div class="uk-article-meta uk-text-small">
+				<div class="window-footer-buttons uk-flex">
+					<a href="{{ .Site.BaseURL }}" class="uk-button uk-button-default uk-button-small" title="Go home"
+						uk-tooltip>Go
+						home
+						&raquo;</a>
+				</div>
+			</div>
+		</div>
+	</article>
+</div>
+{{ end }}
