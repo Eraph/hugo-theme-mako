@@ -50,6 +50,7 @@ a {
     &:hover {
         transition: 0.15s;
         color: $mako-subdued !important;
+        text-decoration: none;
     }
 }
 
@@ -75,11 +76,6 @@ li > p {
     color: $mako-primary;
     background-color: $mako-faint;
     font-weight: normal;
-}
-
-.uk-icon, :first-child .uk-icon {
-    color: $mako-primary;
-    flex-shrink: 0 !important;
 }
 
 .uk-breadcrumb > :last-child > span, .uk-breadcrumb > :last-child > a:not([href]) {

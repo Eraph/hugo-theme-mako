@@ -12,3 +12,36 @@
     </div>
   </div>
 </nav>
+
+{{ if .Site.Params.osFiles }}
+<div class="uk-margin-medium-bottom">
+	<div class="uk-card uk-card-default uk-card-small">
+		<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
+			<div class="uk-card-header">
+        <p class="title uk-flex">
+            <span class="title-icon" uk-icon='bookmark'
+                title='Shortcuts' uk-tooltip></span>
+            <span class="uk-link-reset title-text" title="Shortcuts" uk-tooltip="pos: top-left">
+                Shortcuts</span>
+            <a class="title-icon" uk-icon="home" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
+        </p>
+    </div>
+
+			<div class="uk-flex uk-flex-1 uk-flex-top uk-flex-left uk-flex-wrap uk-card-body">
+        {{ partial "big_icon.html" .Site.Home }}
+        {{ range where $.Site.Sections "Name" "in" .Site.Params.Sections }}
+				  {{ partial "big_icon.html" . }}
+        {{ end }}
+        {{ range $.Site.Params.NavigationTaxonomies }}
+          {{ with ($.Site.GetPage (printf "/%s" .)) }}
+            {{ partial "big_icon.html" . }}
+          {{ end }}
+        {{ end }}
+        {{ range where .Site.RegularPages "Type" "pages" }}
+          {{ partial "big_icon.html" . }}
+        {{ end }}
+			</div>
+		</article>
+	</div>
+</div>
+{{ end }}
