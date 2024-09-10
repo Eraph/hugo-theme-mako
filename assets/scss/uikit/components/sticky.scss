@@ -13,10 +13,7 @@
 // Variables
 // ========================================================================
 
-$sticky-z-index:                                 $global-z-index - 20 !default;
 
-$sticky-animation-duration:                      0.2s !default;
-$sticky-reverse-animation-duration:              0.2s !default;
 
 
 /* ========================================================================
@@ -25,6 +22,8 @@ $sticky-reverse-animation-duration:              0.2s !default;
 
 /*
  * 1. Create position context so it's t the same like when fixed.
+ * 2. Create stacking context already when not sticky to have the same context
+*     for position set to `sticky` and `relative`
  * 2. More robust if padding and border are used and the sticky height is transitioned
  */
 
@@ -32,6 +31,8 @@ $sticky-reverse-animation-duration:              0.2s !default;
     /* 1 */
     position: relative;
     /* 2 */
+    z-index: $sticky-z-index;
+    /* 3 */
     box-sizing: border-box;
 }
 
@@ -40,7 +41,6 @@ $sticky-reverse-animation-duration:              0.2s !default;
  */
 
 .uk-sticky-fixed {
-    z-index: $sticky-z-index;
     margin: 0 !important;
     /* 1 */
     -webkit-backface-visibility: hidden;
@@ -51,7 +51,7 @@ $sticky-reverse-animation-duration:              0.2s !default;
  * Faster animations
  */
 
-.uk-sticky[class*='uk-animation-'] { animation-duration: $sticky-animation-duration; }
+.uk-sticky[class*="uk-animation-"] { animation-duration: $sticky-animation-duration; }
 
 .uk-sticky.uk-animation-reverse { animation-duration: $sticky-reverse-animation-duration; }
 
