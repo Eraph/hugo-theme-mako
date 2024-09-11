@@ -10,8 +10,8 @@
 				{{ range (index .Site.Taxonomies (lower .Name)).ByCount }}
 				<li class='{{ if eq $relPermalink .Page.RelPermalink }}uk-active{{ end }}'>
 					<a href="{{ .Page.RelPermalink }}">
-						<span uk-icon="copy"></span>
-						<span class="uk-text-capitalize">{{ (humanize .Name) }}</span>
+						<span uk-icon="copy" class="uk-flex-none"></span>
+						<span class="uk-text-capitalize uk-text-truncate">{{ (humanize .Name) }}</span>
 						<span class="uk-text-right uk-flex-1 uk-margin-small-left uk-margin-remove-bottom">{{ .Count }}</span>
 					</a>
 				</li>

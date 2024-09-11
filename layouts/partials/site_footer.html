@@ -1,13 +1,15 @@
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
 	<article class="uk-article">
 		<div class="uk-card-header">
-			<p class="title uk-flex">
-				<span class="title-icon" uk-icon="info" title="Etc." uk-tooltip></span>
-				<span class="title-text" title="Etc." uk-tooltip>Etc.</span>
-				<a class="title-icon" href="" uk-totop uk-scroll title="Go to top" uk-tooltip></a>
+			<p class="mako-title uk-flex">
+				<span class="uk-flex-none" uk-icon="info" title="Etc." uk-tooltip></span>
+				<span class="mako-title-text uk-text-truncate uk-flex-1" title="Etc." uk-tooltip>
+					<strong class="uk-text-middle uk-margin-small-left uk-margin-small-right">Etc.</strong>
+				</span>
+				<a class="uk-flex-none" href="" uk-totop uk-scroll title="Go to top" uk-tooltip></a>
 			</p>
 		</div>
-		<div class="uk-card-body uk-flex">
+		<div class="uk-card-body uk-flex uk-flex-column uk-flex-row@m">
 			<p class="uk-margin-remove">
 				<span uk-icon="info"></span> &copy; Copyright {{ .Site.LastChange | time.Format "2006" }}
 				{{ .Site.Params.Author }}<br>

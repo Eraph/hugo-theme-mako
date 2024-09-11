@@ -3,11 +3,11 @@
 {{ else if not .p1.IsHome }}
 {{ partial "breadcrumb.html" (dict "p1" .p1.Site.Home "p2" .p2 ) }}
 {{ end }}
-<li class="uk-text-small">
-    <span uk-icon="triangle-right"></span>
+<li class="uk-text-small uk-flex-inline">
+    <span class="uk-flex-none" uk-icon="triangle-right"></span>
     {{ if eq .p1 .p2 }}
-    <span>{{ .p1.Title }}</span>
+    <span class="uk-text-truncate">{{ .p1.Title }}</span>
     {{ else }}
-    <a href="{{ .p1.RelPermalink }}">{{ .p1.Title }}</a>
+    <a href="{{ .p1.RelPermalink }}" class="uk-text-truncate">{{ .p1.Title }}</a>
     {{ end }}
 </li>

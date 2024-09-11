@@ -4,55 +4,60 @@
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom uk-flex-first@m">
   <article class="uk-article">
     <div class="uk-card-header">
-      <p class="title uk-flex">
-        <span class="title-icon" uk-icon='user' title='About' uk-tooltip></span>
-        <span class="uk-link-reset title-text" title="{{ $title }}" uk-tooltip>{{ $title }}
+      <p class="mako-title uk-flex">
+        <span class="uk-flex-none" uk-icon='user' title='About' uk-tooltip></span>
+        <span class="uk-link-reset mako-title-text uk-text-truncate uk-flex-1" title="{{ $title }}" uk-tooltip>
+          <strong class="uk-text-middle uk-margin-small-left uk-margin-small-right">{{ $title }}</strong>
         </span>
-        <a class="title-icon" uk-icon="link" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
+        <a class="uk-flex-none" uk-icon="link" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
       </p>
     </div>
     <div class="uk-card-body">
       {{ with .Site.Params.ProfilePicture }}
-      <div class="image uk-margin-bottom">
+      <div class="mako-image uk-margin-bottom">
         <img src="{{ . | relURL }}">
       </div>
       {{ end }}
       {{ with .Site.Params.Pronouns }}
-      <ul class="uk-list uk-margin-remove-vertical nav-nolink">
+      <ul class="uk-list uk-margin-small-top uk-margin-small-bottom">
         <li class="uk-text-small">
-          <span>
-            <span uk-icon="quote-right"></span>
-            <span>{{ . }}</span>
-          </span>
+          <span uk-icon="quote-right" class="uk-flex-none"></span>
+          <span>{{ . }}</span>
         </li>
       </ul>
       {{ end }}
       {{ with .Site.Params.Location }}
-      <ul class="uk-list uk-margin-remove-vertical nav-nolink">
+      <ul class="uk-list uk-margin-small-top uk-margin-small-bottom">
         <li class="uk-text-small">
-          <span>
-            <span uk-icon="location"></span>
-            <span>{{ . }}</span>
-          </span>
+          <span uk-icon="location" class="uk-flex-none"></span>
+          <span>{{ . }}</span>
         </li>
       </ul>
       {{ end }}
       {{ with where (.Site.RegularPages.ByParam "order") "Section" "pages" }}
-      <ul class="uk-nav uk-nav-default" uk-nav>
+      <ul class="uk-nav uk-margin-small-top uk-margin-small-bottom uk-nav-default" uk-nav>
         {{ range . }}
         <li class='{{ if eq $relPermalink (path.Join "/pages" (urlize .Page.Title)) }}uk-active{{ end }}'>
           <a href="{{ .Page.RelPermalink }}">
-            <span uk-icon="file-text"></span>
-            <span>{{ .Page.Title }}</span>
+            <span uk-icon="file-text" class="uk-flex-none"></span>
+            <span class="uk-text-truncate">{{ .Page.Title }}</span>
           </a>
         </li>
         {{ end }}
       </ul>
       {{ end }}
+      {{ with .Site.Params.Email }}
+      <ul class="uk-list uk-margin-small-top uk-margin-small-bottom">
+        <li class="uk-text-small">
+          <span uk-icon="mail" class="uk-flex-none"></span>
+          <span><a href="mailto:{{ . }}">Contact</a></span>
+        </li>
+      </ul>
+      {{ end }}
     </div>
     <div class="uk-card-footer">
-      <div class="uk-article-meta uk-text-small">
-        <p class="uk-comment-meta uk-subnav uk-margin-remove-top uk-padding-small uk-padding-remove-vertical">
+      <div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-wrap uk-flex-column uk-flex-row@m">
+        <p class="uk-comment-meta uk-padding-small uk-padding-small uk-padding-remove-vertical mako-margin-1">
           {{ partial "get_tagline.html" .Site.Params }}
         </p>
       </div>

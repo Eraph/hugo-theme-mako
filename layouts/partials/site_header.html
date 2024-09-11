@@ -2,7 +2,7 @@
   <div class="uk-navbar-left uk-padding-small">
     <a class="uk-navbar-item uk-logo" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
   </div>
-  <div class="header-navigation uk-flex uk-flex-row uk-flex-middle">
+  <div class="mako-header-navigation uk-flex uk-flex-row uk-flex-middle">
     <ul
       class="uk-breadcrumb uk-margin-remove-vertical uk-margin-small-left uk-margin-small-right uk-flex-auto uk-visible@m">
       {{ partial "breadcrumb.html" (dict "p1" . "p2" .) }}
@@ -15,33 +15,35 @@
 
 {{ if .Site.Params.osFiles }}
 <div class="uk-margin-medium-bottom uk-visible@m">
-	<div class="uk-card uk-card-default uk-card-small">
-		<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
-			<div class="uk-card-header">
-        <p class="title uk-flex">
-            <span class="title-icon" uk-icon='bookmark'
-                title='Shortcuts' uk-tooltip></span>
-            <span class="uk-link-reset title-text" title="Shortcuts" uk-tooltip="pos: top-left">
-                Shortcuts</span>
-            <a class="title-icon" uk-icon="home" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
+  <div class="uk-card uk-card-default uk-card-small">
+    <article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
+      <div class="uk-card-header">
+        <p class="mako-title uk-flex">
+          <span class="uk-flex-none" uk-icon='bookmark' title='Shortcuts' uk-tooltip></span>
+          <span class="uk-link-reset mako-title-text uk-text-truncate uk-flex-1" title="Shortcuts" uk-tooltip="pos: top-left">
+            <strong class="uk-text-middle uk-margin-small-left uk-margin-small-right">Shortcuts</strong></span>
+          <a class="uk-flex-none" uk-icon="home" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
         </p>
-    </div>
+      </div>
 
-			<div class="uk-flex uk-flex-1 uk-flex-top uk-flex-left uk-flex-wrap uk-card-body">
+      <div class="uk-flex uk-flex-1 uk-flex-top uk-flex-left uk-flex-wrap uk-card-body">
         {{ partial "big_icon.html" .Site.Home }}
-        {{ range where $.Site.Sections "Name" "in" .Site.Params.Sections }}
-				  {{ partial "big_icon.html" . }}
+        {{ range where .Site.Sections "Name" "in" .Site.Params.Sections }}
+        {{ partial "big_icon.html" . }}
         {{ end }}
-        {{ range $.Site.Params.NavigationTaxonomies }}
-          {{ with ($.Site.GetPage (printf "/%s" .)) }}
-            {{ partial "big_icon.html" . }}
-          {{ end }}
+        {{ range .Site.Params.NavigationTaxonomies }}
+        {{ with ($.Site.GetPage (printf "/%s" .)) }}
+        {{ partial "big_icon.html" . }}
+        {{ end }}
         {{ end }}
         {{ range where .Site.RegularPages "Type" "pages" }}
-          {{ partial "big_icon.html" . }}
+        {{ partial "big_icon.html" . }}
         {{ end }}
-			</div>
-		</article>
-	</div>
+        {{ with .Site.Params.Email }}
+        {{ partial "big_icon_contact" . }}
+        {{ end }}
+      </div>
+    </article>
+  </div>
 </div>
 {{ end }}

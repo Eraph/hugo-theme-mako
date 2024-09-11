@@ -2,37 +2,31 @@
 {{ $seriesUrl := "series" | relURL }}
 {{ $formattedDate := .Date | time.Format (.Site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
 
-<ul class="uk-comment-meta uk-subnav uk-margin-remove-top">
-    <li>
-        <span>
-            <span uk-icon="calendar"></span>
-            <span class="uk-margin-small-left" title="{{ $formattedDate }}" uk-tooltip>
-                {{ $formattedDate }}
-            </span>
+<ul class="uk-comment-meta uk-subnav mako-margin-1">
+    <li class="uk-flex uk-flex-initial">
+        <span class="uk-flex-none" uk-icon="calendar"></span>
+        <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate" title="{{ $formattedDate }}" uk-tooltip>
+            {{ $formattedDate }}
         </span>
     </li>
     {{ with .Params.Categories }}
     {{ range . }}
-    <li>
-        <span>
-            <span uk-icon="folder"></span>
-            <a href="{{ $categoriesUrl }}/{{ . | urlize }}"
-                class="uk-text-capitalize uk-link-muted uk-margin-small-left">
-                {{ . }}
-            </a>
-        </span>
+    <li class="uk-flex uk-flex-initial">
+        <span class="uk-flex-none" uk-icon="folder"></span>
+        <a href="{{ $categoriesUrl }}/{{ . | urlize }}"
+            class="uk-text-capitalize uk-margin-small-left uk-margin-small-right uk-text-truncate">
+            {{ . }}
+        </a>
     </li>
     {{ end }}
     {{ end }}
     {{ with .Params.Series }}
     {{ range . }}
-    <li>
-        <span>
-            <span uk-icon="album"></span>
-            <a href="{{ $seriesUrl}}/{{ . | urlize }}" class="uk-text-capitalize uk-margin-small-left">
-                {{ . }}
-            </a>
-        </span>
+    <li class="uk-flex uk-flex-initial">
+        <span class="uk-flex-none" uk-icon="album"></span>
+        <a href="{{ $seriesUrl}}/{{ . | urlize }}" class="uk-text-capitalize uk-margin-small-left uk-margin-small-right uk-text-truncate">
+            {{ . }}
+        </a>
     </li>
     {{ end }}
     {{ end }}

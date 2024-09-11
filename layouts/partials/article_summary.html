@@ -3,12 +3,12 @@
 		<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
 			{{ partial "window_header.html" . }}
 
-			<div class="uk-card-body uk-flex uk-flex-1 uk-flex-top uk-flex-wrap">
+			<div class="uk-card-body uk-flex uk-flex-1 uk-flex-top uk-flex-wrap uk-flex-row@m uk-flex-column">
 				{{ if isset .Params "images" }}
 				{{ $pageLink := .RelPermalink }}
 				{{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
 				{{ $image := .Resize "500x" }}
-				<div class="uk-margin-right image summary-image uk-flex uk-flex-auto">
+				<div class="mako-image mako-summary-image uk-margin-auto uk-margin-bottom uk-flex uk-flex-auto">
 					<a href="{{ $pageLink }}">
 						<img src="{{ $image.RelPermalink }}">
 					</a>
@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="uk-card-footer">
-				<div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-wrap">
+				<div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m uk-flex-wrap">
 					{{ partial "article_footer.html" . }}
 					{{ partial "summary_footer.html" . }}
 				</div>

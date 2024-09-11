@@ -1,10 +1,10 @@
 {{ $tagsUrl := "tags" | relURL }}
 
-<p class="tags uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-1">
+<p class="uk-comment-meta uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-auto uk-margin-left mako-margin-1">
 	{{ with .Params.Tags }}
-	<span uk-icon="tag"></span>
+	<span class="uk-flex-none" uk-icon="tag"></span>
 	{{ range . }}
-	<a href="{{ $tagsUrl }}/{{ . | urlize }}" class="uk-text-lowercase uk-margin-small-left">
+	<a href="{{ $tagsUrl }}/{{ . | urlize }}" class="uk-text-lowercase uk-margin-small-left uk-text-nowrap">
 		{{ . }}
 	</a>
 	{{ end }}

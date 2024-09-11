@@ -11,8 +11,8 @@
             {{ .Content }}
         </div>
 
-        <div class="uk-card-footer">
-            <div class="uk-article-meta uk-text-small uk-flex uk-flex-row">
+        <div class="uk-card-footer uk-flex-column uk-flex-row@l">
+            <div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m">
                 {{ partial "article_footer.html" . }}
                 {{ partial "footer_tags.html" . }}
             </div>
@@ -21,7 +21,7 @@
 </div>
 {{ end }}
 
-<div uk-grid class="uk-grid-match uk-child-width-1-2@m uk-flex-row">
+<div uk-grid class="uk-grid-match uk-child-width-1-2@l uk-flex-row">
     {{ end }}
 
     {{ range (.Paginate .Pages).Pages }}

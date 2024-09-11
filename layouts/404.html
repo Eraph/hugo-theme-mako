@@ -2,12 +2,12 @@
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
 	<article class="uk-article">
 		<div class="uk-card-header">
-			<p class="title uk-flex">
-				<span class="title-icon" uk-icon='ban' title="Error" uk-tooltip></span>
-				<a class="uk-link-reset title-text" href='{{ .Site.BaseURL }}' title="HTTP Error 404: Page Not Found"
+			<p class="mako-title uk-flex">
+				<span class="uk-flex-none" uk-icon='ban' title="Error" uk-tooltip></span>
+				<a class="uk-link-reset mako-title-text uk-text-truncate uk-flex-1" href='{{ .Site.BaseURL }}' title="HTTP Error 404: Page Not Found"
 					uk-tooltip>
-					HTTP Error 404: Page Not Found</a>
-				<a class="title-icon" uk-icon="home" href='{{ .Site.BaseURL }}' title="Go home" uk-tooltip></a>
+					<strong class="uk-text-middle uk-margin-small-left uk-margin-small-right">HTTP Error 404: Page Not Found</strong></a>
+				<a class="uk-flex-none" uk-icon="home" href='{{ .Site.BaseURL }}' title="Go home" uk-tooltip></a>
 			</p>
 		</div>
 		<div class="uk-card-body">
@@ -18,10 +18,10 @@
 			</p>
 			<p>There's nothing here.</p>
 		</div>
-		<div class="uk-card-footer">
-			<div class="uk-article-meta uk-text-small">
-				<div class="window-footer-buttons uk-flex">
-					<a href="{{ .Site.BaseURL }}" class="uk-button uk-button-default uk-button-small" title="Go home"
+		<div class="uk-card-footer uk-flex-column uk-flex-row@l">
+			<div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-wrap uk-flex-column uk-flex-row@m">
+				<div class="mako-margin-1 uk-flex uk-flex-auto uk-flex-right">
+					<a href="{{ .Site.Home.RelPermalink }}" class="uk-button uk-button-default uk-button-small" title="Go home"
 						uk-tooltip>Go
 						home
 						&raquo;</a>

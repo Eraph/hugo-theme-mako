@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default " en-us" }}">
+<html lang="{{ .Site.LanguageCode | default " en-us" }}" class="uk-background-fixed">
 
 <head>
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Site.Title }} :: {{ .Title }}{{ end }}</title>
@@ -27,6 +27,8 @@
     {{ if .Site.Params.opengraph | default true }}
     {{- template "_internal/opengraph.html" . -}}
     {{ end }}
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit-icons.min.js"></script>
 </head>
 
 <body>
@@ -53,9 +55,6 @@
 
         {{ partialCached "site_footer.html" . }}
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/js/uikit-icons.min.js"></script>
 </body>
 
 </html>

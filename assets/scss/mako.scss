@@ -11,11 +11,11 @@ $mako-unknown: #00ff00;
 
 // 1. Custom variables and variable overwrites.
 $global-color: $mako-main;
-$global-inverse-color: $mako-background;
 $global-background: $mako-background;
 $global-muted-background: $mako-background;
 $global-muted-color: $mako-main;
 $global-link-color: $mako-primary;
+$global-link-hover-color: $mako-subdued;
 $global-emphasis-color: $mako-primary;
 $global-primary-background: $mako-primary;
 $global-border: $mako-primary;
@@ -24,116 +24,180 @@ $global-success-background: #cf0;
 $global-warning-background: #fc0;
 $global-danger-background: #c00;
 
+$global-font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
+
+$article-meta-color: $mako-primary;
+
+$base-body-background: linear-gradient(27deg, $mako-primary 0%, $mako-faint 100%);
+$base-code-color: $mako-primary;
+$base-em-color: unset;
+$base-pre-border-radius: 0;
+$base-pre-color: $mako-primary;
+$base-link-hover-text-decoration: none;
+
+$badge-color: $mako-main;
+$badge-background: $mako-faint;
+
+$breadcrumb-item-color: $mako-primary;
+$breadcrumb-item-active-color: $mako-primary;
+$breadcrumb-item-hover-color: $mako-faint;
+$breadcrumb-divider: none;
+
+$button-text-transform: none;
+
+$button-default-background: $mako-faint;
+$button-default-color: $mako-primary;
+$button-default-hover-background: $mako-primary;
+$button-default-hover-color: $mako-faint;
+
+$card-default-box-shadow: 0 0 0 1px $mako-background;
+$card-default-background: $mako-background;
+$card-default-color: $mako-main;
+
+$card-small-header-padding-vertical: 1px;
+$card-small-header-padding-horizontal: 1px;
+
+$card-small-footer-padding-vertical: 0;
+$card-small-footer-padding-horizontal: 0;
+
+$comment-meta-color: $mako-primary;
+
+$container-padding-horizontal: 5px;
+
+$icon-button-border-radius: 0;
+$icon-button-color: $mako-primary;
+
+$icon-link-color: $mako-primary !important;
+
+$link-text-hover-color: $mako-subdued;
+
+$nav-default-item-color: $mako-primary;
+$nav-default-item-hover-color: $mako-subdued;
+$nav-default-item-active-color: $mako-primary;
+
+$offcanvas-bar-color-mode: dark !default;
+
+$subnav-item-color: $mako-primary;
+$subnav-item-hover-color: $mako-subdued;
+$subnav-item-active-color: $mako-primary;
+$subnav-item-text-transform: capitalize;
+
 $tooltip-background: $mako-primary;
 $tooltip-color: $mako-faint;
-
-$base-pre-color: $mako-primary;
-
-$global-font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
 
 // 2. Import default variables and available mixins.
 @import "uikit/variables-theme.scss";
 @import "uikit/mixins-theme.scss";
 
 // 3. Custom mixin overwrites.
-@mixin hook-card() { color: #000; }
-
-// 4. Import UIkit.
-@import "uikit/uikit-theme.scss";
-
-body {
-    background: linear-gradient(27deg, $mako-primary 0%, $mako-faint 100%);
-    overflow-x: hidden;
+@mixin border-1() {
+    border-style: solid;
+    border-width: 1px;
 }
 
-a {
-    &:hover {
+@mixin object-border() {
+    @include border-1();
+    border-color: $mako-primary;
+    box-shadow: 0 0 0 1px $mako-background;
+}
+
+@mixin hook-base-body() {
+    overflow-x: hidden;
+    
+    a, button {
         transition: 0.15s;
-        color: $mako-subdued !important;
-        text-decoration: none;
     }
 }
 
-blockquote {
+@mixin hook-base-blockquote() {
     border-left: 3px solid $mako-main;
     padding-left: 5px;
     font-style: unset;
 }
 
-pre {
-    border-radius: 0;
-}
-
-em {
-    color: unset;
-}
-
-li > p {
-    margin-bottom: 0;
-}
-
-:not(pre) > code {
-    color: $mako-primary;
+@mixin hook-base-code() {
     background-color: $mako-faint;
     font-weight: normal;
+    padding: 2px 6px;
 }
 
-.uk-breadcrumb > :last-child > span, .uk-breadcrumb > :last-child > a:not([href]) {
-    color: $mako-primary;
+@mixin hook-badge() {
+    @include border-1();
+    border-color: $mako-main;
 }
 
-.uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
-    content: none;
+@mixin hook-button-default() {
+    @include border-1();
+    border-color: $mako-primary;
 }
 
-.uk-container {
-    @media (max-width: $breakpoint-medium) {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
+@mixin hook-button-default-hover() {
+    border-color: $mako-faint;
 }
 
-.uk-card-body {
-    &:not(&.uk-flex-row) {
-        @media (max-width: $breakpoint-medium) {
-            flex-direction: column;
-        }
-    }
+@mixin hook-card() {
+    @include object-border();
 }
 
-.uk-navbar-container, .image, div.uk-card {
-    border: 1px solid $mako-primary;
-    box-shadow: 0 0 0 1px $mako-background;
-}
-
-.image img {
-    border: 1px solid $mako-faint;
-}
-
-.uk-badge {
-    border: solid 1px $mako-main;
-    color: $mako-main !important;
-    background-color: $mako-faint;
-}
-
-.uk-button, .uk-icon-button {
-    border-width: 1px;
+@mixin hook-card-default-header() {
+    border-bottom: 1px solid $mako-primary; 
     background-color: $mako-subdued;
-    border-radius: 0;
+    color: $mako-primary;
 
-    &.uk-button-default {
-        background-color: $mako-faint;
+    a:hover {
+        color: $mako-faint !important;
+    }
 
-        &:hover {
-            background-color: $mako-primary;
-            color: $mako-faint !important;
-            border-color: $mako-faint;
+    .mako-title {
+        > * {
+            border: 1px solid $mako-primary;
+        }
+
+        .uk-icon {
+            padding: 4px;
+        }
+
+        .mako-title-text {
+            margin: 0 1px;
+            background-color: $mako-faint;
+            color: $mako-primary !important;
+        }
+        
+        a.mako-title-text:hover {
+            color: $mako-subdued !important;
         }
     }
 }
 
-.uk-navbar-container {
-    border-top: none;
+@mixin hook-card-body() {
+    .mako-summary-image {
+        max-width: 300px;
+
+        @media (min-width: $breakpoint-medium) {
+            margin-right: 20px !important;
+            margin-bottom: 0 !important;
+        }
+    }
+}
+
+@mixin hook-card-default-footer() {
+    border-top: 1px solid $mako-primary;
+    background-color: $mako-subdued;
+    color: $mako-primary;
+
+    a:hover {
+        color: $mako-faint !important;
+    }
+}
+
+@mixin hook-icon-button() {
+    @include border-1();
+    border-color: $mako-primary;
+}
+
+@mixin hook-navbar-container() {
+    @include object-border();
+    border-top-style: none;
 
     > :first-child {
         {{ with .Site.Params.Theme.TitleBackgroundImage }}
@@ -141,227 +205,33 @@ li > p {
         background-size: cover !important;
         background-position-y: bottom !important;
         {{ end }}
+        border-bottom: 1px solid $mako-primary;
     }
 
-    &:not(.uk-navbar-transparent), .uk-logo
-    {
-        font-family: inherit;
-    }
-
-    .header-navigation {
+    .mako-header-navigation {
+        background-color: $mako-subdued;
         padding: 1px;
-        color: $mako-primary;
-        background-color: $mako-subdued;
-        border-top: 1px solid $mako-primary;
-
-        li > a {
-            color: inherit;
-
-            &:hover {
-                transition: 0.15s;
-                color: $mako-faint !important;
-            }
-        }
     }
 }
 
-.uk-tooltip {
-    border: 1px solid $mako-faint;
+@mixin hook-tooltip() {
+    @include border-1();
+    border-color: $mako-faint;
 }
 
-ul.uk-nav span, ul.uk-list span, ul.uk-list a {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
+// 4. Import UIkit.
+@import "uikit/uikit-theme.scss";
 
-ul.nav-nolink > li > span {
-    padding: 5px 0;
-    display: flex;
-    column-gap: .25em;
-}
+// 5. Custom styles
+.mako-image {
+    @include object-border();
 
-.uk-offcanvas-bar {
-    border-right: 1px solid $mako-primary;
-    color: unset;
-
-    a {
-        color: inherit;
-    }
-
-    .uk-nav-default > li {
-        &.uk-active a span {
-            color: $mako-primary;
-        }
-
-        > a {
-            color: inherit;
-        }
-    }
-
-    .uk-list > li {
-        display: flex;
-        
-        > * {
-            display: inline-block;
-            max-width: 100%;
-        }
-
-        > span:not(.uk-icon) {
-            color: $mako-primary;
-        }
+    img {
+        @include border-1();
+        border-color: $mako-faint;
     }
 }
 
-div.uk-card {
-    background-color: $global-muted-background;
-
-    .uk-article p {
-        min-width: 10rem;
-    }
-
-    .uk-card-header, .uk-card-footer {
-        margin: 0;
-        color: $mako-primary;
-    }
-    
-    .uk-card-header {
-        padding: 1px;
-        border-bottom: 1px solid $mako-primary;    
-        background-color: $mako-subdued;
-
-        a:hover {
-            transition: 0.15s;
-            color: $mako-faint !important;
-        }
-        
-        .title {
-                > * {
-                    border: 1px solid $mako-primary;
-                }
-            
-            .title-icon {
-                flex-shrink: 1;
-                padding: 2px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                min-width: 24px;
-
-                > svg {
-                    margin: 0;
-                }
-            }
-
-            .title-text {
-                flex-grow: 1;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                background-color: $mako-faint;
-                color: $mako-primary !important;
-                font-weight: 800;
-                margin: 0 1px;
-                padding: 2px 10px;
-            }
-        }
-    }
-
-    .uk-card-body {
-        justify-content: space-around;
-
-        .summary-image {
-            max-width: 300px;
-
-            @media (max-width: $breakpoint-medium) {
-                margin-right: auto !important;
-                margin-left: auto;
-                margin-bottom: 20px;
-            }
-        }
-    }
-
-    .uk-card-footer {
-        border-top: 1px solid $mako-primary;
-        background-color: $mako-subdued;
-        padding: 0;
-
-        a:hover {
-            transition: 0.15s;
-            color: $mako-faint !important;
-        }
-
-        .uk-article-meta {
-            color: inherit;
-
-            @media (max-width: $breakpoint-medium) {
-                flex-direction: column;
-            }
-
-            a {
-                color: inherit;
-            }
-
-            ul, div, p {
-                margin: 2px 0;
-
-                span {
-                    color: inherit;
-                    text-transform: capitalize;
-                    flex-shrink: 1;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-                
-                &.uk-comment-meta {
-                    color: inherit; 
-                    a {
-                        color: inherit;
-                    }
-                }
-            }
-
-            ul {
-                flex-shrink: 1;
-                margin: 2px 15px;
-
-                li {
-                    flex: none;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                }
-            }
-
-            p {
-                width: 100%;
-
-                &.tags {
-                    margin: 2px 35px;
-
-                    a {
-                        white-space: nowrap;
-                    }
-                }
-            }
-
-            div.window-footer-buttons {
-                margin: 1px;
-                justify-content: end;
-
-                a {
-                    text-transform: capitalize;
-                }
-            }
-
-            .uk-subnav > * {
-                flex: inherit;
-            }
-        }
-    }
-}
-
-.uk-flex-left {
-    justify-content: flex-start !important;
+.mako-margin-1 {
+    margin: 1px;
 }
