@@ -195,6 +195,12 @@ $tooltip-color: $mako-faint;
     border-color: $mako-primary;
 }
 
+@mixin hook-list-misc() {
+    li {
+        max-width: 100%;
+    }
+}
+
 @mixin hook-navbar-container() {
     @include object-border();
     border-top-style: none;
@@ -212,6 +218,10 @@ $tooltip-color: $mako-faint;
         background-color: $mako-subdued;
         padding: 1px;
     }
+}
+
+@mixin hook-subnav() {
+    max-width: 100%;
 }
 
 @mixin hook-tooltip() {
