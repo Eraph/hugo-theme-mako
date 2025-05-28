@@ -245,3 +245,19 @@ $tooltip-color: $mako-faint;
 .mako-margin-1 {
     margin: 1px;
 }
+
+
+.uk-nav-default > li > span {
+    display: flex;
+    align-items: center;
+    column-gap: .25em;
+    color: $nav-default-item-color;
+    @if(mixin-exists(hook-nav-default-item)) {@include hook-nav-default-item();}
+    padding: $nav-item-padding-vertical $nav-item-padding-horizontal;
+    padding-left: $card-body-padding-horizontal;
+    padding-right: $card-body-padding-horizontal;
+    @media (min-width: $breakpoint-large) {
+        padding-left: $card-body-padding-horizontal-l;
+        padding-right: $card-body-padding-horizontal-l;
+    }
+}

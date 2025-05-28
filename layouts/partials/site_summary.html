@@ -18,42 +18,50 @@
         <img src="{{ . | relURL }}">
       </div>
       {{ end }}
-      {{ with .Site.Params.Pronouns }}
-      <ul class="uk-list uk-margin-small-top uk-margin-small-bottom">
+      <ul class="uk-nav uk-margin-small-top uk-margin-small-bottom uk-nav-default uk-padding-none" uk-nav>
+        {{ with .Site.Params.Pronouns }}
         <li class="uk-text-small">
-          <span uk-icon="quote-right" class="uk-flex-none"></span>
-          <span>{{ . }}</span>
+          <span>
+            <span uk-icon="quote-right" class="uk-flex-none"></span>
+            <span>{{ . }}</span>
+          </span>
         </li>
-      </ul>
-      {{ end }}
-      {{ with .Site.Params.Location }}
-      <ul class="uk-list uk-margin-small-top uk-margin-small-bottom">
+        {{ end }}
+        {{ with .Site.Params.Location }}
         <li class="uk-text-small">
-          <span uk-icon="location" class="uk-flex-none"></span>
-          <span>{{ . }}</span>
+          <span>
+            <span uk-icon="location" class="uk-flex-none"></span>
+            <span>{{ . }}</span>
+          </span>
         </li>
-      </ul>
-      {{ end }}
-      {{ with where (.Site.RegularPages.ByParam "order") "Section" "pages" }}
-      <ul class="uk-nav uk-margin-small-top uk-margin-small-bottom uk-nav-default" uk-nav>
+        {{ end }}
+        {{ with where (.Site.RegularPages.ByParam "order") "Section" "pages" }}
         {{ range . }}
-        <li class='{{ if eq $relPermalink (path.Join "/pages" (urlize .Page.Title)) }}uk-active{{ end }}'>
+        <li class='{{ if eq $relPermalink (path.Join "/pages" (urlize .Page.Title)) }}uk-active{{ end }} uk-text-small'>
           <a href="{{ .Page.RelPermalink }}">
             <span uk-icon="file-text" class="uk-flex-none"></span>
             <span class="uk-text-truncate">{{ .Page.Title }}</span>
           </a>
         </li>
         {{ end }}
-      </ul>
-      {{ end }}
-      {{ with .Site.Params.Email }}
-      <ul class="uk-list uk-margin-small-top uk-margin-small-bottom">
+        {{ end }}
+        {{ range .Site.Params.Socials }}
         <li class="uk-text-small">
-          <span uk-icon="mail" class="uk-flex-none"></span>
-          <span><a href="mailto:{{ . }}">Contact</a></span>
+          <a href="{{ .url }}">
+            <span uk-icon="{{ .icon }}" class="uk-flex-none"></span>
+            <span>{{ .name }}</span>
+          </a>
         </li>
+        {{ end }}
+        {{ with .Site.Params.Email }}
+        <li class="uk-text-small">
+          <a href="mailto:{{ . }}">
+            <span uk-icon="mail" class="uk-flex-none"></span>
+            <span>Contact</span>
+          </a>
+        </li>
+        {{ end }}
       </ul>
-      {{ end }}
     </div>
     <div class="uk-card-footer">
       <div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-wrap uk-flex-column uk-flex-row@m">
