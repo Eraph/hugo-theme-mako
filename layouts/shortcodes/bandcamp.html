@@ -1,0 +1,4 @@
+{{ $albumId := .Get "albumId" }}
+{{ if $albumId }}
+    <iframe style="border: 0; width: 350px; height: 470px;" class="uk-align-center" src="https://bandcamp.com/EmbeddedPlayer/album={{ $albumId }}/size=large/bgcol={{ slicestr .Site.Params.Theme.Primary 1 }}/linkcol={{ slicestr .Site.Params.Theme.Background 1 }}/tracklist=false/transparent=true/" seamless></iframe>
+{{ end }}

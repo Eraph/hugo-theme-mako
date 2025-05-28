@@ -1,0 +1,4 @@
+{{ $albumId := .Get "albumId" }}
+{{ if $albumId }}
+    <iframe title="deezer-widget" class="uk-align-center" src="https://widget.deezer.com/widget/dark/album/{{ $albumId }}?tracklist=false" width="400" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
+{{ end }}
