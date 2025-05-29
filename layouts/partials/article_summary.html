@@ -7,7 +7,7 @@
 				{{ if isset .Params "images" }}
 				{{ $pageLink := .RelPermalink }}
 				{{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
-				{{ $image := .Resize "500x" }}
+				{{ $image := .Resize "844x" }}
 				<div class="mako-image mako-summary-image uk-margin-auto uk-margin-bottom uk-flex uk-flex-auto">
 					<a href="{{ $pageLink }}">
 						<img src="{{ $image.RelPermalink }}">

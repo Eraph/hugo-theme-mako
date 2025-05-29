@@ -6,7 +6,8 @@
     <div class="uk-card-body">
       {{ if isset .Params "images" }}
       {{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
-      {{ partial "image.html" .RelPermalink }}
+      {{ $image := .Resize "844x" }}
+      {{ partial "image.html" $image.RelPermalink }}
       {{ end }}
       {{ end }}
       {{ .Content }}
