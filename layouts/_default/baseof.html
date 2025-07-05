@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default " en-us" }}" class="uk-background-fixed">
 
 <head>
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Site.Title }} :: {{ .Title }}{{ end }}</title>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Site.Title }} | {{ .Title }}{{ end }}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="{{ .Site.Params.author }}" />
@@ -16,7 +16,7 @@
     {{ end -}}
     {{- $sassTemplate := resources.Get "scss/mako.scss" -}}
     {{- $sassAsTemplate := resources.ExecuteAsTemplate "scss/mako.scss" . $sassTemplate -}}
-    {{- $toCssOptions := dict "targetPath" "mako.css" -}}
+    {{- $toCssOptions := dict "targetPath" "mako.css" "transpiler" "dartsass" -}}
     {{- $style := $sassAsTemplate | resources.ToCSS $toCssOptions | resources.Minify | resources.Fingerprint -}}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" crossorigin="anonymous" integrity="{{ $style.Data.Integrity }}" type="text/css" />
     {{ if .Site.Params.google_analytics | default false }}

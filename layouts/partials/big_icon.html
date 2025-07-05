@@ -1,10 +1,12 @@
-<a href="{{ .Page.RelPermalink }}" class="uk-flex uk-flex-column uk-flex-middle uk-margin-left uk-margin-right">
-    <span uk-icon='icon: {{ partial "get_icon.html" .Page }}; ratio: 2'></span>
-    <span>
-        {{ if .IsHome }}
+<div class="uk-margin-medium-bottom">
+    <a href="{{ .RelPermalink }}" class="uk-flex uk-flex-column uk-flex-middle">
+        <span uk-icon='icon: {{ partial "get_icon.html" . }}; ratio: 2'></span>
+        <span>
+            {{ if .IsHome }}
             Home
-        {{ else }}
+            {{ else }}
             {{ .Page.Title }}
-        {{ end }}
-    </span>
-</a>
+            {{ end }}
+        </span>
+    </a>
+</div>

@@ -1,4 +1,12 @@
-<div class="mako-margin-1 uk-flex-auto uk-flex uk-flex-right">
-	<a href="{{ .RelPermalink }}" class="uk-button uk-button-default uk-button-small uk-width-1-1 uk-width-auto@m">Read
-		more &raquo;</a>
-</div>
+{{ $tagsUrl := "tags" | relURL }}
+
+<p class="uk-comment-meta uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-auto uk-margin-left mako-margin-1">
+	{{ with .Params.Tags }}
+	<span class="uk-flex-none" uk-icon="tag"></span>
+	{{ range . }}
+	<a href="{{ $tagsUrl }}/{{ . | urlize }}" class="uk-text-lowercase uk-margin-small-left uk-text-nowrap">
+		{{ . }}
+	</a>
+	{{ end }}
+	{{ end }}
+</p>

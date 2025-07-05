@@ -1,6 +1,7 @@
 {{ $relPermalink := .Page.RelPermalink }}
 
-{{ range where $.Site.Sections "Name" "in" .Site.Params.Sections }}
+{{ range where .Site.Sections "Params.inNavigation" "eq" true }}
+
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
 	<article class="uk-article">
 		{{ partial "window_header.html" . }}

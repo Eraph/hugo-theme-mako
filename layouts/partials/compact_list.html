@@ -1,0 +1,56 @@
+<div class="uk-margin-medium-bottom">
+    <div class="uk-card uk-card-default uk-card-small">
+        <article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
+            {{ partial "window_header.html" . }}
+
+            <div class="uk-card-body uk-flex uk-flex-1 uk-flex-wrap uk-flex-column">
+                <div class="uk-flex uk-flex-1 uk-flex-column">
+                    <ul class="uk-list uk-list-large uk-list-divider">
+                        {{ range first 10 .Pages }}
+                        <li>
+                            <a href="{{ .RelPermalink }}" class="uk-text-large">{{ .Title }}</a><br>
+                            {{ $formattedDate := .Date | time.Format (.Site.Params.DateFormat |
+                            default "02/Jan/2006 15:04 MST") }}
+                            <span class="uk-flex uk-flex-middle">
+                                <span class="uk-flex-none" uk-icon="calendar"></span>
+                                <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate"
+                                    title="{{ $formattedDate }}" uk-tooltip>
+                                    {{ $formattedDate }}
+                                </span>
+                            </span>
+                            <a href='{{ path.Join "/categories" ((index .Params.Categories 0) | urlize) | relURL }}' class="uk-flex uk-flex-middle">
+                                <span class="uk-flex-none" uk-icon="folder"></span>
+                                <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate"
+                                    title="{{ index .Params.Categories 0 }}" uk-tooltip>
+                                    {{ index .Params.Categories 0 }}
+                                </span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    <div class="mako-margin-1 uk-flex-auto uk-flex uk-flex-right">
+                        <a href="{{ .RelPermalink }}"
+                            class="uk-button uk-button-default uk-button-small uk-width-1-1 uk-width-auto@m">All {{
+                            .Title }} &raquo;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-card-footer">
+                <div
+                    class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m uk-flex-wrap">
+                    <div class="mako-margin-1 uk-flex-auto uk-flex uk-flex-left">
+                        <ul class="uk-comment-meta uk-subnav mako-margin-1">
+                            <li class="uk-flex uk-flex-initial">
+                                <span class="uk-flex-none" uk-icon="list"></span>
+                                <span class="uk-margin-small-left uk-margin-small-right">{{ math.Min .Pages.Len 10 }} /
+                                    {{
+                                    .Pages.Len }} {{ .Title }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>

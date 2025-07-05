@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+{{ $listSections := where .Site.Sections "Params.frontPageList" "eq" true }}
+{{ $featureSections := where .Site.Sections "Params.frontPageFeature" "eq" true }}
+
+
+<div uk-grid class="uk-grid-match uk-child-width-1-2@l uk-flex-row">
+    {{ range $listSections }}
+    {{ partial "compact_list" . }}
+    {{ end }}
+
+    <div>
+        {{ range $featureSections }}
+        {{ partial "feature_list" . }}
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

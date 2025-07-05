@@ -1,7 +1,7 @@
 {{ $relPermalink := path.Join .Page.RelPermalink }}
 {{ $title := .Site.Params.Author | default "My Blog" }}
 
-<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom uk-flex-first@m">
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
   <article class="uk-article">
     <div class="uk-card-header">
       <p class="mako-title uk-flex">
@@ -37,7 +37,8 @@
         {{ end }}
         {{ with where (.Site.RegularPages.ByParam "order") "Section" "pages" }}
         {{ range . }}
-        <li class='{{ if eq $relPermalink (path.Join "/pages" (urlize .Page.Title)) }}uk-active{{ end }} uk-text-small'>
+        <li
+          class='{{ if eq $relPermalink (.Page.Title | urlize | path.Join "/pages") }}uk-active{{ end }} uk-text-small'>
           <a href="{{ .Page.RelPermalink }}">
             <span uk-icon="file-text" class="uk-flex-none"></span>
             <span class="uk-text-truncate">{{ .Page.Title }}</span>

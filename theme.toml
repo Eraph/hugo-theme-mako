@@ -3,7 +3,7 @@ license = "MIT"
 licenselink = "https://github.com/Eraph/hugo-theme-mako/blob/master/LICENSE.md"
 description = "Mako theme for blogs"
 homepage = "https://github.com/Eraph/hugo-theme-mako"
-tags = ["blog", "responsive", "personal", "dark"]
+tags = ["blog", "responsive", "personal", "dark", "light", "retro"]
 features = [
 ]
 min_version = 0.55

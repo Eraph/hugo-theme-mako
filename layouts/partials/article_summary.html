@@ -1,13 +1,13 @@
-<div class="uk-margin-medium-bottom">
-	<div class="uk-card uk-card-default uk-card-small">
-		<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
-			{{ partial "window_header.html" . }}
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+	<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
+		{{ partial "window_header.html" . }}
 
-			<div class="uk-card-body uk-flex uk-flex-1 uk-flex-top uk-flex-wrap uk-flex-row@m uk-flex-column">
+		<div class="uk-card-body">
+			<div class="uk-flex uk-flex-1 uk-flex-top uk-flex-wrap uk-flex-row@m uk-flex-column">
 				{{ if isset .Params "images" }}
 				{{ $pageLink := .RelPermalink }}
-				{{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
-				{{ $image := .Resize "844x" }}
+				{{ with index .Params.Images 0 | path.Base | .Resources.GetMatch }}
+				{{ $image := .Resize "596x q97 lanczos" }}
 				<div class="mako-image mako-summary-image uk-margin-auto uk-margin-bottom uk-flex uk-flex-auto">
 					<a href="{{ $pageLink }}">
 						<img src="{{ $image.RelPermalink }}">
@@ -20,12 +20,21 @@
 				</div>
 			</div>
 
-			<div class="uk-card-footer">
-				<div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m uk-flex-wrap">
-					{{ partial "article_footer.html" . }}
-					{{ partial "summary_footer.html" . }}
-				</div>
+			{{ if or .Truncated .IsSection }}
+			<div class="mako-margin-1 uk-flex-auto uk-flex uk-flex-right">
+				<a href="{{ .RelPermalink }}"
+					class="uk-button uk-button-default uk-button-small uk-width-1-1 uk-width-auto@m">Read
+					more &raquo;</a>
 			</div>
-		</article>
-	</div>
+			{{ end }}
+		</div>
+
+		<div class="uk-card-footer">
+			<div
+				class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m uk-flex-wrap">
+				{{ partial "article_footer.html" . }}
+				{{ partial "summary_footer.html" . }}
+			</div>
+		</div>
+	</article>
 </div>

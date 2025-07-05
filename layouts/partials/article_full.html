@@ -1,0 +1,24 @@
+<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
+    <article class="uk-article">
+        {{ partial "window_header.html" . }}
+
+        <div class="uk-card-body">
+            {{ if isset .Params "images" }}
+            {{ with index .Params.Images 0 | path.Base | .Resources.GetMatch }}
+            {{ $image := .Fit "844x512 q97 lanczos" }}
+            <div class="uk-flex uk-flex-center">
+                {{ partial "image.html" $image.RelPermalink }}
+            </div>
+            {{ end }}
+            {{ end }}
+            {{ .Content }}
+        </div>
+
+        <div class="uk-card-footer">
+            <div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m">
+                {{ partial "article_footer.html" . }}
+                {{ partial "footer_tags.html" . }}
+            </div>
+        </div>
+    </article>
+</div>

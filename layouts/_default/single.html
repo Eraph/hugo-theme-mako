@@ -1,25 +1,3 @@
 {{ define "main" }}
-<div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
-  <article class="uk-article">
-    {{ partial "window_header.html" . }}
-
-    <div class="uk-card-body">
-      {{ if isset .Params "images" }}
-      {{ with .Resources.GetMatch (path.Base (index .Params.Images 0)) }}
-      {{ $image := .Resize "844x" }}
-      {{ partial "image.html" $image.RelPermalink }}
-      {{ end }}
-      {{ end }}
-      {{ .Content }}
-    </div>
-
-    <div class="uk-card-footer">
-      <div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m">
-        {{ partial "article_footer.html" . }}
-        {{ partial "footer_tags.html" . }}
-      </div>
-    </div>
-  </article>
-</div>
-
+{{ partial "article_full" . }}
 {{ end }}

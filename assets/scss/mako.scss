@@ -35,6 +35,8 @@ $base-pre-border-radius: 0;
 $base-pre-color: $mako-primary;
 $base-link-hover-text-decoration: none;
 
+$text-meta-color: $mako-main;
+
 $badge-color: $mako-main;
 $badge-background: $mako-faint;
 
@@ -103,8 +105,9 @@ $tooltip-color: $mako-faint;
 
 @mixin hook-base-body() {
     overflow-x: hidden;
-    
-    a, button {
+
+    a,
+    button {
         transition: 0.15s;
     }
 }
@@ -140,7 +143,7 @@ $tooltip-color: $mako-faint;
 }
 
 @mixin hook-card-default-header() {
-    border-bottom: 1px solid $mako-primary; 
+    border-bottom: 1px solid $mako-primary;
     background-color: $mako-subdued;
     color: $mako-primary;
 
@@ -149,7 +152,7 @@ $tooltip-color: $mako-faint;
     }
 
     .mako-title {
-        > * {
+        >* {
             border: 1px solid $mako-primary;
         }
 
@@ -162,7 +165,7 @@ $tooltip-color: $mako-faint;
             background-color: $mako-faint;
             color: $mako-primary !important;
         }
-        
+
         a.mako-title-text:hover {
             color: $mako-subdued !important;
         }
@@ -236,7 +239,7 @@ $tooltip-color: $mako-faint;
 .mako-image {
     @include object-border();
 
-    img {
+    img, div[uk-img] {
         @include border-1();
         border-color: $mako-faint;
     }
@@ -246,16 +249,26 @@ $tooltip-color: $mako-faint;
     margin: 1px;
 }
 
+.mako-feature-text {
+    color: $mako-primary;
+    background-color: $mako-background;
+    border: 1px solid $mako-primary;
+}
 
-.uk-nav-default > li > span {
+.uk-nav-default>li>span {
     display: flex;
     align-items: center;
     column-gap: .25em;
     color: $nav-default-item-color;
-    @if(mixin-exists(hook-nav-default-item)) {@include hook-nav-default-item();}
+
+    @if(mixin-exists(hook-nav-default-item)) {
+        @include hook-nav-default-item();
+    }
+
     padding: $nav-item-padding-vertical $nav-item-padding-horizontal;
     padding-left: $card-body-padding-horizontal;
     padding-right: $card-body-padding-horizontal;
+
     @media (min-width: $breakpoint-large) {
         padding-left: $card-body-padding-horizontal-l;
         padding-right: $card-body-padding-horizontal-l;

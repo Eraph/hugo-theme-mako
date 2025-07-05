@@ -4,10 +4,6 @@
 {{ $icon = "desktop" }}
 {{ end }}
 
-{{ if in .Site.Params.Sections .Name }}
-{{ $icon = "thumbnails"}}
-{{ end }}
-
 {{ if eq .Name "Series" }}
 {{ $icon = "album"}}
 {{ end }}
@@ -22,6 +18,10 @@
 
 {{ if eq .Name "About" }}
 {{ $icon = "info"}}
+{{ end }}
+
+{{ if ne .Params.Icon nil }}
+{{ $icon = .Params.Icon }}
 {{ end }}
 
 {{ return $icon }}
