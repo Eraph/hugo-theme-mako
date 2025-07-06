@@ -11,10 +11,10 @@
 		</div>
 		<div class="uk-card-body uk-flex uk-flex-column uk-flex-row@m">
 			<p class="uk-margin-remove">
-				<span uk-icon="info"></span> &copy; Copyright {{ .Site.LastChange | time.Format "2006" }}
+				<span uk-icon="info"></span> &copy; Copyright {{ .Site.Lastmod.Year }}
 				{{ .Site.Params.Author }}<br>
 				<span uk-icon="calendar"></span> Last updated
-				{{ .Site.LastChange | time.Format (.Site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
+				{{ .Site.Lastmod | time.Format (.Site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
 			</p>
 			<p class="uk-margin-remove uk-text-right@s uk-flex-auto"><a href="https://github.com/Eraph/hugo-theme-mako"
 					target="_blank"><span uk-icon="github-alt"></span> Hugo

@@ -17,7 +17,7 @@
     {{- $sassTemplate := resources.Get "scss/mako.scss" -}}
     {{- $sassAsTemplate := resources.ExecuteAsTemplate "scss/mako.scss" . $sassTemplate -}}
     {{- $toCssOptions := dict "targetPath" "mako.css" "transpiler" "dartsass" -}}
-    {{- $style := $sassAsTemplate | resources.ToCSS $toCssOptions | resources.Minify | resources.Fingerprint -}}
+    {{- $style := $sassAsTemplate | css.Sass $toCssOptions | resources.Minify | resources.Fingerprint -}}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" crossorigin="anonymous" integrity="{{ $style.Data.Integrity }}" type="text/css" />
     {{ if .Site.Params.google_analytics | default false }}
     {{ template "_internal/google_analytics.html" . -}}
