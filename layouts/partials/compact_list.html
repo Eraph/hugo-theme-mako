@@ -13,15 +13,13 @@
                             default "02/Jan/2006 15:04 MST") }}
                             <span class="uk-flex uk-flex-middle">
                                 <span class="uk-flex-none" uk-icon="calendar"></span>
-                                <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate"
-                                    title="{{ $formattedDate }}" uk-tooltip>
+                                <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate">
                                     {{ $formattedDate }}
                                 </span>
                             </span>
                             <a href='{{ path.Join "/categories" ((index .Params.Categories 0) | urlize) | relURL }}' class="uk-flex uk-flex-middle">
                                 <span class="uk-flex-none" uk-icon="folder"></span>
-                                <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate"
-                                    title="{{ index .Params.Categories 0 }}" uk-tooltip>
+                                <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate">
                                     {{ index .Params.Categories 0 }}
                                 </span>
                             </a>
