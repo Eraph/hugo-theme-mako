@@ -28,6 +28,28 @@
     {{ if .Site.Params.opengraph | default true }}
     {{- template "_internal/opengraph.html" . -}}
     {{ end }}
+    <meta name="application-name" content="{{ site.Title }}"/>
+    <meta name="msapplication-TileColor" content="{{ .Site.Params.FaviconMsTileColor }}" />
+    {{/*  {{- partialCached "msFavicon.html" (dict "image" "img/og.png" "size" "310x150" "name" "msapplication-wide310x150logo") "310x150" }}  */}}
+    {{ with .Site.Params.Favicon }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "57x57") "57x57" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "114x114") "114x114" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "72x72") "72x72" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "144x144") "144x144" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "60x60") "60x60" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "120x120") "120x120" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "76x76") "76x76" }}
+        {{- partialCached "appleTouchIcon.html" (dict "image" . "size" "152x152") "152x152" }}
+        {{- partialCached "favicon.html" (dict "image" . "size" "196x196") "196x196" }}
+        {{- partialCached "favicon.html" (dict "image" . "size" "96x96") "96x96" }}
+        {{- partialCached "favicon.html" (dict "image" . "size" "32x32") "32x32" }}
+        {{- partialCached "favicon.html" (dict "image" . "size" "16x16") "16x16" }}
+        {{- partialCached "favicon.html" (dict "image" . "size" "128x128") "128x128" }}
+        {{- partialCached "msFavicon.html" (dict "image" . "size" "144x144" "name" "msapplication-TileImage") "144x144" }}
+        {{- partialCached "msFavicon.html" (dict "image" . "size" "70x70" "name" "msapplication-square70x70logo") "70x70" }}
+        {{- partialCached "msFavicon.html" (dict "image" . "size" "150x150" "name" "msapplication-square150x150logo") "150x150" }}
+        {{- partialCached "msFavicon.html" (dict "image" . "size" "310x310" "name" "msapplication-square310x310logo") "310x310" }}
+    {{ end }}
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit-icons.min.js"></script>
 </head>

@@ -1,0 +1,9 @@
+{{- $imgPath := .image}}
+{{- $imgSize := .size }}
+{{- with resources.Get $imgPath }}
+{{- with .Fill (printf "%s Lanczos q100 center" $imgSize) }}
+{{- with .Crop (printf "%s Lanczos q100 center" $imgSize) }}
+  <link rel="apple-touch-icon-precomposed" sizes="{{ $imgSize }}" href="{{ .Permalink }}" />
+{{- end }}
+{{- end }}
+{{- end }}

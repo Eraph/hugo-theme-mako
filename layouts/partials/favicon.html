@@ -1,0 +1,10 @@
+{{- $imgPath := .image}}
+{{- $imgSize := .size }}
+
+{{- with resources.Get $imgPath }}
+{{- with .Fill (printf "%s Lanczos q100 center" $imgSize) }}
+{{- with .Crop (printf "%s Lanczos q100 center" $imgSize) }}
+  <link rel="icon" sizes="{{ $imgSize }}" type="image/x-icon" href="{{ .Permalink }}" />
+{{- end }}
+{{- end }}
+{{- end }}
