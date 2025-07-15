@@ -3,20 +3,20 @@
         <article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
             {{ partial "window_header.html" . }}
 
-            <div class="uk-card-body uk-flex uk-flex-1 uk-flex-wrap uk-flex-column">
-                <div class="uk-flex uk-flex-1 uk-flex-column">
+            <div class="uk-card-body">
+                <div class="uk-flex uk-flex-column uk-width-1-1">
                     <ul class="uk-list uk-list-large uk-list-divider">
                         {{ range first 10 .Pages }}
                         <li>
-                            <a href="{{ .RelPermalink }}" class="uk-text-large">{{ .Title }}</a><br>
+                            <a href="{{ .RelPermalink }}" class="uk-text-large">{{ .Title }}</a>
                             {{ $formattedDate := .Date | time.Format (.Site.Params.DateFormat |
                             default "02/Jan/2006 15:04 MST") }}
-                            <span class="uk-flex uk-flex-middle">
+                            <div class="uk-flex uk-flex-middle">
                                 <span class="uk-flex-none" uk-icon="calendar"></span>
                                 <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate">
                                     {{ $formattedDate }}
                                 </span>
-                            </span>
+                            </div>
                             <a href='{{ path.Join "/categories" ((index .Params.Categories 0) | urlize) | relURL }}' class="uk-flex uk-flex-middle">
                                 <span class="uk-flex-none" uk-icon="folder"></span>
                                 <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate">
