@@ -8,8 +8,13 @@
     <meta name="author" content="{{ .Site.Params.author }}" />
     <meta name="description"
         content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
-    <link href='https://fonts.googleapis.com/css2?family={{ .Site.Params.Theme.Font | default "Jura" }}&display=swap'
-        rel="stylesheet">
+    {{ with .Site.Params.Theme.Font | default "Jura" }}
+    {{ $localFont := resources.GetMatch (printf "fonts/%s.*" .) }}
+        {{ if eq $localFont nil }}
+        <link href='https://fonts.googleapis.com/css2?family={{ . }}&display=swap'
+            rel="stylesheet">
+        {{ end }}
+    {{ end }}
     {{- range .AlternativeOutputFormats -}}
     {{ printf `
     <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}

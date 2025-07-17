@@ -24,7 +24,19 @@ $global-success-background: #cf0;
 $global-warning-background: #fc0;
 $global-danger-background: #c00;
 
-$global-font-family: '{{ .Site.Params.Theme.Font | default "Jura" }}', sans-serif;
+{{ with .Site.Params.Theme.Font | default "Jura" }}
+    {{ $localFont := resources.GetMatch (printf "fonts/%s.*" .) }}
+    {{ if ne $localFont nil }}
+    @font-face {
+        font-family: '{{ . }}';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url({{ $localFont.RelPermalink }});
+    }
+    {{ end }}
+    $global-font-family: '{{ . }}', sans-serif;
+{{ end }}
 
 $article-meta-color: $mako-primary;
 
