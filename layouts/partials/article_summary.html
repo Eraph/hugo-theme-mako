@@ -1,5 +1,7 @@
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
 	<article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
+		{{/*  Yeah, this is too restrictive. Pass in what the contents should be, don't try to infer them.  */}}
+		{{/*  Also, find where "custom" headers have been used without referring to this partial  */}}
 		{{ partial "window_header.html" . }}
 
 		<div class="uk-card-body">

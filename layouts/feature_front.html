@@ -5,9 +5,11 @@
 
 
 <div uk-grid class="uk-grid-match uk-child-width-1-2@l uk-flex-row">
-    {{ range $listSections }}
-    {{ partial "compact_list" . }}
-    {{ end }}
+    <div>
+        {{ range $listSections }}
+        {{ partial "compact_posts" . }}
+        {{ end }}
+    </div>
 
     <div>
         {{ range $featureSections }}

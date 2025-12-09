@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+{{ $relatedPages := where (.Site.RegularPages.Related (dict
+    "indices" (slice "tags")
+    "document" .
+    "namedSlices" (slice (keyVals "tags" .Params.relatedTags))
+)) "Type" "posts" | first 10 }}
+
+{{ if .Content }}
+{{ partial "article_full" . }}
+{{ end }}
+
+{{ with $relatedPages }}
+<div uk-grid class="uk-child-width-1-2@l uk-flex-row">
+    <div>
+{{ end }}
+{{ range (.Paginate .RegularPages).Pages }}
+    {{ partial "article_summary" . }}
+{{ end }}
+
+{{ with $relatedPages }}
+    </div>
+    {{/*  <div>
+    {{ range . }}
+    {{ partial "article_summary" . }}
+    {{ end }}
+    </div>  */}}
+    {{ partial "compact_list" (dict "Pages" . "Page" page) }}
+</div>
+{{ end }}
+
+{{ end }} 

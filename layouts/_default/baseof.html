@@ -63,7 +63,9 @@
     {{ partial "site_menu.html" . }}
     <div class="uk-container">
         {{ partial "site_header.html" . }}
-
+<pre>{{ debug.Dump . }}</pre>
+<pre>{{ debug.Dump .Name }}</pre>
+<pre>{{ debug.Dump .Params }}</pre>
         {{ $contentFlow := "uk-flex-row" }}
 
         {{ if eq (.Site.Params.sidebar | lower) "left" }}
