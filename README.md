@@ -18,8 +18,8 @@ git clone https://github.com/Eraph/hugo-theme-mako.git themes/mako
 
 And set the theme in your site's config file:
 
-``` toml
-theme = "mako"
+``` yaml
+theme: "mako"
 ```
 
 ## Configuring
@@ -27,29 +27,32 @@ theme = "mako"
 
 The list below shows the theme's configurable settings along with their default values unless specified as optional, in which case they will be hidden when not set.
 
-``` toml
-[params]
-  author = "My Name"  # Put your name in here.
-  pronouns = "He/Him"  # Optional pronouns that are displayed immediately below your avatar.
-  profilePicture = "path/to.image"  # Optional path to your profile picture, e.g. "images/avatar.jpg"
-  location = "New York City, USA" # Optional location indiciator, shows below your profile picture.
-  description = "Something About This Site" # Appears under your profile picture.
-  sections = ["projects"] # Optionally list any sections to be displayed in the sidebar.
-  navigation_taxonomies = [ "series", "categories" ]  # Optionally list any taxonomies to be displayed in the sidebar.
-  sidebar = "left"  # Allows moving the sidebar to the left. By default it is on the right.
-  dateFormat = "02/Jan/2006 15:04 MST"  # How datetimes should be formatted. See the note below before changing this.
-  google_analytics = False # Enable or disable Google Analytics.
-  twitter_cards = False # Enable or disable Twitter Cards.
-  opengraph = True # Enable or disable Opengraph.
+``` yaml
+params:
+  author:
+    name: "My Name"  # Put your name in here.
+    email: "email@address.com"  # Put your email address in here
+  description: "Something About This Site" # Appears under your profile picture.
+  pronouns: "He/Him"  # Optional pronouns that are displayed immediately below your avatar.
+  profilePicture: "path/to.image"  # Optional path to your profile picture, e.g. "images/avatar.jpg"
+  location: "New York City, USA" # Optional location indiciator, shows below your profile picture.
+  navigation_taxonomies:  # Optionally list any taxonomies to be displayed in the sidebar.
+    - "series"
+    - "categories"
+  sidebar: "left"  # Allows moving the sidebar to the left. By default it is on the right.
+  dateFormat: "02/Jan/2006 15:04 MST"  # How datetimes should be formatted. See the note below before changing this.
+  google_analytics: talse # Enable or disable Google Analytics.
+  twitter_cards: false # Enable or disable Twitter Cards.
+  opengraph: true # Enable or disable Opengraph.
 
-  [params.theme]
-  titleBackgroundImage = "images/bg.jpg" # Optional background image for the title bar
-  font = "Jura" # Optional Google font, defaults to [Jura](https://fonts.google.com/specimen/Jura). See notes below.
+  theme:
+    titleBackgroundImage: "images/bg.jpg" # Optional background image for the title bar
+    font: "Jura" # Optional Google font, defaults to [Jura](https://fonts.google.com/specimen/Jura). See notes below.
 
-  # Theme custom colours; see below for more information
-  primary = "#fc0"
-  secondary = "#960"
-  background = "#090909"
+    # Theme custom colours; see below for more information
+    primary: "#fc0"
+    secondary: "#960"
+    background: "#090909"
 ```
 
 ### Date Formats
@@ -75,13 +78,12 @@ Take a look at the [Google Fonts](https://fonts.google.com/) site and find a fon
 ### Taglines
 The footer of the site summary panel (where your profile picture appears) will contain the `description` as specified in config params by default, but can be set to a random entry from a list by adding a `taglines` array to your config params.
 
-``` toml
-[params]
-  taglines = [
-    "A cool website",
-    "A really neat website",
-    "Your new favourite blog"
-  ]
+``` yaml
+params:
+  taglines:
+    - "A cool website"
+    - "A really neat website"
+    - "Your new favourite blog"
 ```
 
 Of course, Hugo is a static site generator so the tagline will not change on each refresh but it will change for each page whenever the site is regenerated. Fill this up with silly quotes and see how it affects different pages around your site.
@@ -102,7 +104,7 @@ images:
 - Use `series` to group pages into series. Series will show up in the side bar.
 - Use `tags` to add tags to pages. Tags will show up in the side bar.
 
-```
+``` yaml
 description: "A breakdown of my favourite albums."
 categories:
   - Music
@@ -119,78 +121,78 @@ It is possible to set a primary, secondary and background colour to set up your 
 
 ### Mako (default)
 ![Mako Colour Scheme](readme_files/mako_mako.png)
-``` toml
-primary = "#0f9"
-secondary = "#099"
-background = "#090909"
+``` yaml
+    primary: "#0f9"
+    secondary: "#099"
+    background: "#090909"
 ```
 
 ### Toothpaste
 ![Toothpaste Colour Scheme](readme_files/mako_toothpaste.png)
-``` toml
-primary = "#0fc"
-secondary = "#099"
-background = "#f7f7f7"
+``` yaml
+    primary: "#0fc"
+    secondary: "#099"
+    background: "#f7f7f7"
 ```
 
 ### Mustard
 ![Mustard Colour Scheme](readme_files/mako_mustard.png)
-``` toml
-primary = "#fc0"
-secondary = "#960"
-background = "#090909"
+``` yaml
+    primary: "#fc0"
+    secondary: "#960"
+    background: "#090909"
 ```
 
 ### Bronze
 ![Bronze Colour Scheme](readme_files/mako_bronze.png)
-``` toml
-primary = "#aa9e6b"
-background = "#111"
+``` yaml
+    primary: "#aa9e6b"
+    background: "#111"
 ```
 
 ### Grey Light
 ![Grey Light Colour Scheme](readme_files/mako_greylight.png)
-``` toml
-primary = "#000"
-background = "#fff"
+``` yaml
+    primary: "#000"
+    background: "#fff"
 ```
 
 ### Grey Dark
 ![Grey Dark Colour Scheme](readme_files/mako_greydark.png)
-``` toml
-primary = "#fff"
-background = "#000"
+``` yaml
+    primary: "#fff"
+    background: "#000"
 ```
 
 ### Nier
 ![Nier Colour Scheme](readme_files/mako_nier.png)
-``` toml
-primary = "#4e4b42"
-background = "#dad4bb"
+``` yaml
+    primary: "#4e4b42"
+    background: "#dad4bb"
 ```
 
 ### Ragnarok
 ![Ragnarok Colour Scheme](readme_files/mako_ragnarok.png)
-``` toml
-primary = "#f90"
-secondary = "#c00"
-background = "#000"
+``` yaml
+    primary: "#f90"
+    secondary: "#c00"
+    background: "#000"
 ```
 
 ### Hacker
 ![Hacker Colour Scheme](readme_files/mako_hacker.png)
-``` toml
-primary = "#0f0"
-secondary = "#033"
-background = "#000"
+``` yaml
+    primary: "#0f0"
+    secondary: "#033"
+    background: "#000"
 ```
 
 ### Cyberpunk
 ![Cyberpunk Colour Scheme](readme_files/mako_cyberpunk.png)
-``` toml
-primary = "#f09"
-secondary = "#036"
-background = "#000"
+``` yaml
+    primary: "#f09"
+    secondary: "#036"
+    background: "#000"
 ```
 
 ## Navigation Lists
@@ -203,16 +205,13 @@ hugo new pages/my-page-name.md
 
 Add the front matter parameter `order` (integer) to set the order of pages in the list. The order is smallest at the top to largest at the bottom.
 
-Specify other sections in `config.toml` as an array, e.g.
-``` toml
-sections = ["projects"]
-```
-
 ### Taxonomies
-All tags are shown by default at the bottom of the navigation bar. Other taxonomies can be shown above them by specifying them in the `navigation_taxonomies` array in `config.toml`, for example:
+All tags are shown by default at the bottom of the navigation bar. Other taxonomies can be shown above them by specifying them in the `navigation_taxonomies` array in `config.yaml`, for example:
 
-``` toml
-navigation_taxonomies = [ "series", "categories" ]
+``` yaml
+  navigationTaxonomies:
+    - "series"
+    - "categories"
 ```
 
 ## Shortcodes
