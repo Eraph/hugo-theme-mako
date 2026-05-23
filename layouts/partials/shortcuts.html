@@ -25,7 +25,7 @@
                 {{ range where .Site.RegularPages "Type" "pages" }}
                 {{ partial "big_icon.html" . }}
                 {{ end }}
-                {{ with .Site.Params.Email }}
+                {{ with .Site.Params.Author.Email }}
                 {{ partial "big_icon_contact" . }}
                 {{ end }}
             </div>
