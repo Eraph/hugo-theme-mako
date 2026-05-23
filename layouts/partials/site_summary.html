@@ -1,5 +1,5 @@
 {{ $relPermalink := path.Join .Page.RelPermalink }}
-{{ $title := .Site.Params.Author.Name | default "My Blog" }}
+{{ $title := .Site.Params.Author | default "My Blog" }}
 
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
   <article class="uk-article">
@@ -54,7 +54,7 @@
           </a>
         </li>
         {{ end }}
-        {{ with .Site.Params.Author.Email }}
+        {{ with .Site.Params.Email }}
         <li class="uk-text-small">
           <a href="mailto:{{ . }}">
             <span uk-icon="mail" class="uk-flex-none"></span>
