@@ -5,7 +5,7 @@
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Site.Title }} | {{ .Title }}{{ end }}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="{{ .Site.Params.author }}" />
+    <meta name="author" content="{{ .Site.Params.author.Name }}" />
     <meta name="description"
         content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
     {{ with .Site.Params.Theme.Font | default "Jura" }}
