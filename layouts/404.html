@@ -1,15 +1,15 @@
 {{ define "main" }}
 <div class="uk-card uk-card-default uk-card-small uk-margin-medium-bottom">
 	<article class="uk-article">
-		<div class="uk-card-header">
-			<p class="mako-title uk-flex">
-				<span class="uk-flex-none" uk-icon='ban' title="Error" uk-tooltip></span>
-				<a class="uk-link-reset mako-title-text uk-text-truncate uk-flex-1 uk-flex uk-flex-middle uk-flex-center" href='{{ .Site.BaseURL }}' title="HTTP Error 404: Page Not Found"
-					uk-tooltip>
-					<strong class="uk-margin-small-left uk-margin-small-right">HTTP Error 404: Page Not Found</strong></a>
-				<a class="uk-flex-none" uk-icon="home" href='{{ .Site.BaseURL }}' title="Go home" uk-tooltip></a>
-			</p>
-		</div>
+		{{ partial "window_header.html" (dict
+			"title" "Error 404: Page Not Found"
+			"type" "Error 404"
+			"url" .Site.BaseURL
+			"primaryIcon" "ban"
+			"secondaryIcon" "home"
+			"secondaryIconText" "Go Home"
+			"secondaryIconUrl" .Site.BaseURL
+		) }}
 		<div class="uk-card-body">
 			<p>
 				<span uk-icon="icon: bolt; ratio: 2">
@@ -21,10 +21,9 @@
 		<div class="uk-card-footer uk-flex-column uk-flex-row@l">
 			<div class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-wrap uk-flex-column uk-flex-row@m">
 				<div class="mako-margin-1 uk-flex uk-flex-auto uk-flex-right">
-					<a href="{{ .Site.Home.RelPermalink }}" class="uk-button uk-button-default uk-button-small" title="Go home"
-						uk-tooltip>Go
-						home
-						&raquo;</a>
+					<a href="{{ .Site.Home.RelPermalink }}" class="uk-button uk-button-default uk-button-small" title="Go home" uk-tooltip>
+						Go home &raquo;
+					</a>
 				</div>
 			</div>
 		</div>

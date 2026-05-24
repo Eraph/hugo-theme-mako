@@ -1,0 +1,52 @@
+{{ define "main" }}
+{{ if .Content }}
+    {{ partial "article_full" . }}
+{{ end }}
+
+{{ if isset .Params "tags" }}
+{{ $articlesType := partial "get_type" .Page | singularize | printf "%s Articles" }}
+<div uk-grid class="uk-child-width-1-2@l uk-flex-row">
+    <div>
+        {{ partial "compact_list" 
+            (dict
+                "title" $articlesType
+                "type" $articlesType
+                "url" .RelPermalink
+                "pages" (.Pages | first 5)
+                "totalPageCount" .Pages.Len
+                "primaryIcon" (partial "get_icon" .Page)
+                "secondaryIcon" "link"
+                "secondaryIconText" (printf "View %s" $articlesType)
+                "secondaryIconUrl" .RelPermalink
+            )
+        }}
+    </div>
+    <div>
+        {{ $tagPaths := apply .Params.tags "path.Join" "/tags" "." }}
+        {{ $tagPages := where .Site.Pages "Path" "in" $tagPaths }}
+        {{ $relatedPosts := slice }}
+        {{ range $tagPages }}
+            {{ $relatedPosts = union $relatedPosts (where .RegularPages "Section" "eq" "posts") }}
+        {{ end }}
+        {{ partial "compact_list" 
+            (dict
+                "title" "Related Posts"
+                "type" "Related Posts"
+                "url" .RelPermalink
+                "pages" (sort $relatedPosts "Date" "desc" | first 5)
+                "totalPageCount" (len $relatedPosts)
+                "primaryIcon" (partial "get_icon" .Page)
+                "secondaryIcon" "link"
+                "secondaryIconText" (printf "View %s" $articlesType)
+                "secondaryIconUrl" .RelPermalink
+            )
+        }}
+    </div>
+</div>
+{{ else }}
+    {{ range (.Paginate .RegularPages).Pages }}
+        {{ partial "article_summary" . }}
+    {{ end }}
+{{ end }} 
+
+{{ end }}

@@ -1,0 +1,66 @@
+{{/*  
+Pass in a dict with:
+    - title
+    - type
+    - url
+    - pages
+    - totalPageCount
+    - primaryIcon
+    - secondaryIcon
+    - secondaryIconText
+    - secondaryIconUrl
+*/}}
+
+<div class="uk-card uk-card-default uk-card-small">
+    <article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
+        {{ partial "window_header.html" (default . .page) }}
+        <div class="uk-card-body">
+            <div class="uk-flex uk-flex-1 uk-flex-wrap uk-flex-column">
+                {{ range .pages }}
+                <a href="{{ .RelPermalink }}">
+                    <div class="uk-card-media-top">
+                        <div class="mako-image">
+                            {{ $foundCoverImage := index .Params.images 0 | .Resources.GetMatch }}
+                            {{ with $foundCoverImage }}
+                                {{ $image := .Resize "762x q97 lanczos" }}
+                                <img src="{{ $image.RelPermalink }}" width="{{ div $image.Width 2 }}" height="{{ div $image.Height 2 }}">
+                            {{ else }}
+                                <div class="uk-height-small uk-flex uk-flex-center uk-flex-bottom uk-padding-small uk-background-cover" data-src="" uk-img></div>
+                            {{ end }}
+                        </div>
+                    </div>
+                    <div class="uk-card-body mako-feature-text uk-padding-small uk-margin-bottom">
+                        <h3 class="uk-margin-remove-bottom">
+                            {{ .Title }}
+                        </h3>
+                        {{ with .Description }}
+                            <p class="uk-margin-remove-bottom uk-margin-xsmall-top uk-text-meta">
+                                {{ . }}
+                            </p>
+                        {{ end }}
+                    </div>
+                </a>
+                {{ end }}
+                <div class="mako-margin-1 uk-flex-auto uk-flex uk-flex-right">
+                    <a href='{{ .url }}'
+                        class="uk-button uk-button-default uk-button-small uk-width-1-1 uk-width-auto@m">All {{ .type  }} &raquo;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-card-footer">
+            <div
+                class="uk-article-meta uk-text-small uk-flex uk-flex-between uk-flex-column uk-flex-row@m uk-flex-wrap">
+                <div class="mako-margin-1 uk-flex-auto uk-flex uk-flex-left">
+                    <ul class="uk-comment-meta uk-subnav mako-margin-1">
+                        <li class="uk-flex uk-flex-initial">
+                            <span class="uk-flex-none" uk-icon="list"></span>
+                            <span class="uk-margin-small-left uk-margin-small-right">
+                                {{ len .pages }} / {{ .totalPageCount }} {{ .type }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

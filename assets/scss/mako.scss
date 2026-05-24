@@ -184,6 +184,12 @@ $tooltip-color: $mako-faint;
     }
 }
 
+@mixin hook-card-media-top() {
+    .mako-image {
+        border-bottom: none;
+    }
+}
+
 @mixin hook-card-body() {
     .mako-summary-image {
         max-width: 300px;
@@ -255,6 +261,10 @@ $tooltip-color: $mako-faint;
         @include border-1();
         border-color: $mako-faint;
     }
+
+    .uk-background-cover[data-src=""] {
+        background: $base-body-background;
+    }
 }
 
 .mako-margin-1 {
@@ -263,7 +273,7 @@ $tooltip-color: $mako-faint;
 
 .mako-feature-text {
     color: $mako-primary;
-    background-color: $mako-background;
+    background-color: $mako-faint;
     border: 1px solid $mako-primary;
 }
 
