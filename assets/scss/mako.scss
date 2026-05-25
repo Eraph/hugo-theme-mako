@@ -187,6 +187,7 @@ $tooltip-color: $mako-faint;
 @mixin hook-card-media-top() {
     &.mako-image {
         border-bottom: none;
+        box-shadow: none;
     }
 }
 
