@@ -1,0 +1,45 @@
+{{ define "main" }}
+
+{{ $listSections := where .Site.Sections "Params.frontPageList" "eq" true }}
+{{ $featureSections := where .Site.Sections "Params.frontPageFeature" "eq" true }}
+
+
+<div uk-grid class="uk-child-width-1-2@l uk-flex-row">
+    <div>
+        {{ range $listSections }}
+        {{ partial "compact_list"
+            (dict
+                "title" (printf "Newest %s" .Name)
+                "type" (partial "get_type" .Page)
+                "url" .RelPermalink
+                "pages" (.RegularPages | first 5)
+                "totalPageCount" .RegularPages.Len
+                "primaryIcon" (partial "get_icon" .Page)
+                "secondaryIcon" "link"
+                "secondaryIconText" (printf "View %s" .Name)
+                "secondaryIconUrl" .RelPermalink
+            )
+        }}
+        {{ end }}
+    </div>
+
+    <div>
+        {{ range $featureSections }}
+        {{ partial "compact_list" 
+            (dict
+                "title" .Page.Name
+                "type" (partial "get_type" .Page)
+                "url" .RelPermalink
+                "pages" (.Pages | first 5)
+                "totalPageCount" .Pages.Len
+                "primaryIcon" (partial "get_icon" .Page)
+                "secondaryIcon" "link"
+                "secondaryIconText" (printf "View %s" .Name)
+                "secondaryIconUrl" .RelPermalink
+            )
+        }}
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

@@ -1,0 +1,34 @@
+{{ $type := "Posts" }}
+{{ $page := .Page }}
+
+{{ with try .Kind }}
+    {{ if .Value }}
+        {{ $type = .Value }}
+    {{ end }}
+{{ end }}
+
+{{ with try .Type }}
+    {{ if eq .Value "projects" }}
+        {{ $type = cond $page.IsPage "Project Article" "Project"}}
+    {{ else if eq .Value "series" }}
+        {{ $type = "Series"}}
+    {{ else if eq .Value "categories" }}
+        {{ $type = "Category"}}
+    {{ else if eq .Value "tags" }}
+        {{ $type = "Tag"}}
+    {{ else if eq .Value "posts" }}
+        {{ $type = "Blog Post"}}
+    {{ end }}
+{{ end }}
+
+{{ with try .Name }}
+    {{ if eq .Value "About" }}
+        {{ $type = "About"}}
+    {{ end }}
+{{ end }}
+
+{{ if .IsSection }}
+    {{ $type = $type | pluralize}}
+{{ end }}
+
+{{ return ($type | title) }}

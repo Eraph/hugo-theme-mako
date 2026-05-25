@@ -1,0 +1,45 @@
+{{/*
+Optionally pass in a dict with:
+    - title
+    - type
+    - url
+    - primaryIcon
+    - secondaryIcon
+    - secondaryIconText
+    - secondaryIconUrl
+
+Otherwise it will try to figure everything out based on the context (e.g. a page)
+*/}}
+{{ $headerDetail := . }}
+
+{{ if not (reflect.IsMap .) }}
+    {{ $headerDetail = dict
+        "title" .Page.Name
+        "type" (partial "get_type" .Page)
+        "url" .RelPermalink
+        "primaryIcon" (partial "get_icon" .Page) 
+        "secondaryIcon" "link" 
+        "secondaryIconText" (printf "View %s" .Name)
+        "secondaryIconUrl" .RelPermalink
+    }}
+{{ end }}
+
+{{ with $headerDetail }}
+    <div class="uk-card-header">
+        <p class="mako-title uk-flex">
+            <span class="uk-flex-none" uk-icon='{{ .primaryIcon }}' title='{{ .type }}' uk-tooltip></span>
+            {{ if .url }}
+            <a class="uk-link-reset mako-title-text uk-flex-1 uk-flex uk-flex-middle uk-flex-center" href="{{ .url }}" title="{{ .title }}" uk-tooltip="pos: top-left">
+            {{ else }}
+            <span class="mako-title-text uk-flex-1 uk-flex uk-flex-middle uk-flex-center" title="{{ .title }}" uk-tooltip>
+            {{ end }}
+                <strong class="uk-margin-small-left uk-margin-small-right uk-text-truncate">{{ .title }}</strong>
+            {{ if .url }}
+            </a>
+            {{ else }}
+            </span>
+            {{ end }}
+            <a class="uk-flex-none" uk-icon="{{ .secondaryIcon }}" href="{{ .secondaryIconUrl }}" title="{{ .secondaryIconText }}" uk-tooltip uk-scroll></a>
+        </p>
+    </div>
+{{ end }}

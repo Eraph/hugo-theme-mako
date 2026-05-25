@@ -1,17 +1,15 @@
 <div class="uk-margin-medium-bottom">
     <div class="uk-card uk-card-default uk-card-small">
         <article class="uk-article uk-flex uk-flex-column uk-flex-stretch uk-height-1-1">
-            <div class="uk-card-header">
-                <p class="mako-title uk-flex">
-                    <span class="uk-flex-none" uk-icon='bookmark' title='Shortcuts' uk-tooltip></span>
-                    <span class="uk-link-reset mako-title-text uk-text-truncate uk-flex-1 uk-flex uk-flex-middle uk-flex-center" title="Shortcuts"
-                        uk-tooltip="pos: top-left">
-                        <strong
-                            class="uk-margin-small-left uk-margin-small-right">Shortcuts</strong></span>
-                    <a class="uk-flex-none" uk-icon="home" href="{{ .Site.BaseURL }}" title="Go home" uk-tooltip></a>
-                </p>
-            </div>
-
+		{{ partial "window_header.html" (dict
+			"title" "Shortcuts"
+			"type" "Shortcuts"
+			"url" ""
+			"primaryIcon" "bookmark"
+			"secondaryIcon" "home"
+			"secondaryIconText" "Go Home"
+			"secondaryIconUrl" .Site.BaseURL
+		) }}
             <div class="uk-grid uk-grid-column-small uk-grid-row-large uk-child-width-1-2 uk-card-body">
                 {{ partial "big_icon.html" .Site.Home }}
                 {{ range where .Site.Sections "Params.desktopIcon" "eq" true }}

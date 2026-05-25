@@ -1,14 +1,16 @@
 {{ $categoriesUrl := "categories" | relURL }}
 {{ $seriesUrl := "series" | relURL }}
-{{ $formattedDate := .Date | time.Format (.Site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
 
 <ul class="uk-comment-meta uk-subnav mako-margin-1">
+    {{ with .Date }}
+    {{ $formattedDate := . | time.Format (site.Params.DateFormat | default "02/Jan/2006 15:04 MST") }}
     <li class="uk-flex uk-flex-initial">
         <span class="uk-flex-none" uk-icon="calendar"></span>
         <span class="uk-margin-small-left uk-margin-small-right uk-text-truncate" title="{{ $formattedDate }}" uk-tooltip>
             {{ $formattedDate }}
         </span>
     </li>
+    {{ end }}
     {{ with .Params.Categories }}
     {{ range . }}
     <li class="uk-flex uk-flex-initial">

@@ -1,0 +1,33 @@
+{{ $icon := "file-text" }}
+
+{{ with try .IsHome }}
+    {{ if .Value }}
+        {{ $icon = "desktop" }}
+    {{ end }}
+{{ end }}
+
+{{ with try .Type }}
+    {{ if eq .Value "series" }}
+        {{ $icon = "album"}}
+    {{ else if eq .Value "categories" }}
+        {{ $icon = "folder"}}
+    {{ else if eq .Value "tags" }}
+        {{ $icon = "tag"}}
+    {{ else if eq .Value "projects"}}
+        {{ $icon = "nut"}}
+    {{ end }}
+{{ end }}
+
+{{ with try .Name }}
+    {{ if eq .Value "About" }}
+        {{ $icon = "info"}}
+    {{ end }}
+{{ end }}
+
+{{ with try .Params.Icon }}
+    {{ if .Value }}
+        {{ $icon = .Value }}
+    {{ end }}
+{{ end }}
+
+{{ return $icon }}
