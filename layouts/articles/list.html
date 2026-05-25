@@ -1,0 +1,7 @@
+{{ define "main" }}
+    {{ range (.Paginate .Parent.RegularPages).Pages }}
+    {{ partial "article_summary.html" . }}
+    {{ end }}
+
+    {{ partial "paginator.html" .Paginator }}
+{{ end }}

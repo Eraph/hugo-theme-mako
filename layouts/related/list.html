@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ if isset .Parent.Params "tags" }}
+    {{ $tagPaths := apply .Parent.Params.tags "path.Join" "/tags" "." }}
+    {{ $tagPages := where site.Pages "Path" "in" $tagPaths }}
+    {{ $relatedPosts := slice }}
+    {{ range $tagPages }}
+        {{ $relatedPosts = union $relatedPosts (where .RegularPages "Section" "eq" "posts") }}
+    {{ end }}
+    {{ $relatedPosts = sort $relatedPosts "Date" "desc" }}
+
+    {{ range (.Paginate $relatedPosts).Pages }}
+    {{ partial "article_summary.html" . }}
+    {{ end }}
+
+    {{ partial "paginator.html" .Paginator }}
+{{ end }}
+{{ end }}

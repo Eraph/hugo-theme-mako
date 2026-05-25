@@ -11,13 +11,13 @@
             (dict
                 "title" $articlesType
                 "type" $articlesType
-                "url" .RelPermalink
-                "pages" (.Pages | first 5)
-                "totalPageCount" .Pages.Len
+                "url" (path.Join .RelPermalink "list")
+                "pages" (.RegularPages | first 5)
+                "totalPageCount" .RegularPages.Len
                 "primaryIcon" (partial "get_icon" .Page)
                 "secondaryIcon" "link"
                 "secondaryIconText" (printf "View %s" $articlesType)
-                "secondaryIconUrl" .RelPermalink
+                "secondaryIconUrl" (path.Join .RelPermalink "list")
             )
         }}
     </div>
@@ -32,13 +32,13 @@
             (dict
                 "title" "Related Posts"
                 "type" "Related Posts"
-                "url" .RelPermalink
+                "url" (path.Join .RelPermalink "related")
                 "pages" (sort $relatedPosts "Date" "desc" | first 5)
                 "totalPageCount" (len $relatedPosts)
                 "primaryIcon" (partial "get_icon" .Page)
                 "secondaryIcon" "link"
                 "secondaryIconText" (printf "View %s" $articlesType)
-                "secondaryIconUrl" .RelPermalink
+                "secondaryIconUrl" (path.Join .RelPermalink "related")
             )
         }}
     </div>
